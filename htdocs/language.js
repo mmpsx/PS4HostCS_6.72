@@ -54,8 +54,8 @@ function english() {
     "the reverse. <b> First JB then MIRA. </b></p>" +
     "<ol>" +
     "<li> Click on the link that says Jailbreak. In about 20 seconds you will receive: Your PS4 is now " +
-    'Jailbreak until next reboot. Wait until notification "System memory ' +
-    'insufficient". This means that everything went well. <br /> ' +
+    'Jailbreak until next reboot. Wait until notification "Insufficient system memory ' +
+    'This means that everything went well. <br /> ' +
     'If something goes wrong during the process, you may receive an alert saying "The jailbreak ' +
     'failed! Click on Close Browser, restart your PS4 and try again..." In this case, you ' +
     "must restart your PS4, preferably without closing the dialog. <br />" +

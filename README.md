@@ -20,4 +20,4 @@ PS4 Jailbreak Host 25/07/2020
 # CréditsFeatures!
   - TheFlow for the kernel exploit
   - Fire30 for the WebKit exploitconvert to Markdown
-  - Sleirsgoevy for optimise exploit
+  - Sleirsgoevy and DarkModderVC for optimise exploit

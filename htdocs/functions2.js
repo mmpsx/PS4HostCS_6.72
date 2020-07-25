@@ -110,6 +110,8 @@ function load_jb() {
   document.body.appendChild(element);
 }
 function load_binloader() {
+  var lang = document.getElementById('lang');
+  lang.innerHTML = "";
   buildHTML();
   wait();
   setTimeout(function () {
@@ -119,6 +121,8 @@ function load_binloader() {
 }
 
 function load_netcat() {
+  var lang = document.getElementById('lang');
+  lang.innerHTML = "";
   buildHTML();
   notif("Injection de Netcat");
   wait();
@@ -130,6 +134,8 @@ function load_netcat() {
   );
 }
 function load_mira() {
+  var lang = document.getElementById('lang');
+  lang.innerHTML = "";
   buildHTML();
   notif("Injection de Mira + HEN");
   wait();
@@ -142,6 +148,8 @@ function load_mira() {
   );
 }
 function inject_payload(payload) {
+  var lang = document.getElementById('lang');
+  lang.innerHTML = "";
   notif("Injection de la charge utile");
   wait();
   let tab = ["mira", payload, "c-code"];

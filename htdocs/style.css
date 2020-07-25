@@ -1,0 +1,168 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: #cccccc;
+}
+.container {
+  width:100%;
+  position: relative;
+}
+.content-title {
+  font-family: "Bangers", cursive;
+  font-size: 100%;
+  padding: 20px 40px;
+  margin: 5px;
+  background: linear-gradient(45deg, rgb(12,33,63) 15%,rgb(41,137,216) 54%,rgb(32,124,202) 62%,rgb(125,185,232) 100%);
+  border-bottom: 1px solid #fff;
+  border-radius: 10px;
+  color: #fff;
+}
+/*
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}*/
+
+.headerbtn{
+  position:relative;
+  padding:10px 10px;
+
+}
+.btnHeader{
+  padding:10px 25px;
+  text-decoration: none;
+  border: 1px solid black;
+}
+a.btnHeader{
+ margin:0;
+}
+.btn{
+  text-decoration: none;
+}
+table {
+  position:relative;
+  border-collapse: separate; 
+  border-spacing: 0 10px; 
+}
+th {
+  border: 1px solid black;
+  padding:10px;
+  width: 250px;
+}
+
+.message{
+  position:relative;
+  text-align: center;
+  color: red;
+  font-size:25px;
+  bottom:25px;
+}
+.cs-loader {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.cs-loader-inner {
+  transform: translateY(-50%);
+  top: 50%;
+  position: absolute;
+  width:100%;
+  color: #FFF;
+  margin:auto 0;
+  padding: 0 100px;
+  text-align: center; 
+}
+
+.cs-loader-inner label {
+  font-size: 20px;
+  opacity: 0;
+  display:inline-block;
+}
+.cs-loader-inner>label:after{
+  content: '\2022';
+  font-size:50px;
+}
+@keyframes lol {
+  0% {
+    opacity: 0;
+    transform: translateX(-300px);
+  }
+  33% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  66% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(300px);
+  }
+}
+
+@-webkit-keyframes lol {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-300px);
+  }
+  33% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+  }
+  66% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(300px);
+  }
+}
+
+.cs-loader-inner label:nth-child(6) {
+  -webkit-animation: lol 3s infinite ease-in-out;
+  animation: lol 3s infinite ease-in-out;
+}
+
+.cs-loader-inner label:nth-child(5) {
+  -webkit-animation: lol 3s 100ms infinite ease-in-out;
+  animation: lol 3s 100ms infinite ease-in-out;
+}
+
+.cs-loader-inner label:nth-child(4) {
+  -webkit-animation: lol 3s 200ms infinite ease-in-out;
+  animation: lol 3s 200ms infinite ease-in-out;
+}
+
+.cs-loader-inner label:nth-child(3) {
+  -webkit-animation: lol 3s 300ms infinite ease-in-out;
+  animation: lol 3s 300ms infinite ease-in-out;
+}
+
+.cs-loader-inner label:nth-child(2) {
+  -webkit-animation: lol 3s 400ms infinite ease-in-out;
+  animation: lol 3s 400ms infinite ease-in-out;
+}
+
+.cs-loader-inner label:nth-child(1) {
+  -webkit-animation: lol 3s 500ms infinite ease-in-out;
+  animation: lol 3s 500ms infinite ease-in-out;
+}
+footer{
+  position:fixed;
+  width:100%;
+  bottom:20px;
+}

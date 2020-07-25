@@ -34,16 +34,16 @@ function wait() {
 
 function jb_finished() {
   if (main_ret == 179 || main_ret == 0) {
-    notif(
-      "Votre PS4 est maintenant Jailbreak jusqu'au prochain redémarrage \n Patientez jusqu'à la notification \"Mémoire système insuffisante\""
-    );
     wait();
+    notif("Votre PS4 est maintenant Jailbreak jusqu'au prochain redémarrage \n Patientez jusqu'à la notification \"Mémoire système insuffisante\"");
     setTimeout(function () {
       notif("Rechargement du Host");
     }, 3500);
     setTimeout(function () {
       document.location.href = ".";
+      read_ptr_at(0);
     }, 4000);
+   // 
   } else {
     notif(
       "Le jailbreak a échoué! Cliquez sur Fermer le Navigateur, redémarrez votre PS4 et réessayez."
@@ -132,7 +132,6 @@ function load_netcat() {
 }
 function load_mira() {
   buildHTML();
-  //document.cookie ='mira=0';
   notif("Injection de Mira + HEN");
   wait();
   document.write(

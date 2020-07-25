@@ -14,6 +14,8 @@ PS4 Jailbreak Host 25/07/2020
   - Start miniweb.exe from your PC
   - Open your PS4 browser to http: / your local PC IP: 8000
   - Enjoy
+  ### Or Online
+  http://dev-web68.fr
 
 # CréditsFeatures!
   - TheFlow for the kernel exploit

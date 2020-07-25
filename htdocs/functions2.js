@@ -78,7 +78,6 @@ function payload_finished() {
   removeScript(3);
   setTimeout(function () {
     notif(" ");
-    read_ptr_at(0);
   }, 3000);
 }
 

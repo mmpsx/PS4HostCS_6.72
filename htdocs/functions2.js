@@ -85,14 +85,12 @@ function payload_finished() {
 function SC(x) {
   return '<script src="' + x + '.js"></scr' + "ipt>";
 }
-
-function BINLOADER(x) {
-  return SC("PAYLOADS/binloader/" + x);
-}
 function JB(x) {
   return "jb/" + x + ".js";
 }
-
+function BINLOADER(x) {
+  return SC("PAYLOADS/binloader/" + x);
+}
 function NETCAT(x) {
   return SC("PAYLOADS/netcat/" + x);
 }

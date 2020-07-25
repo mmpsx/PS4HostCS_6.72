@@ -1,10 +1,10 @@
 <html>
-
 <head>
     <title>PS4Host_6.72 V2.0 par logic-68 C.S</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="./style.css">
     <script src="functions2.js"></script>
+    <script src="language.js"></script>
     <script>function print() { }</script>
     <script src="common/exploit.js"></script>
     <script src="common/helpers.js"></script>
@@ -44,6 +44,14 @@
             <th><a href="#" class="btn" onclick="inject_payload('kernelClock'); return false">Horloge noyau</a></th>
         </tr>
     </table>
+    <div class="headerbtn" align="center" id="header">
+        <a href="#" class="btnLanguage" onclick="french(); return false">Français</a></th>
+        <a href="#" class="btnLanguage" onclick="english(); return false">English</a></th>
+        <a href="#" class="btnLanguage" onclick="italian(); return false">Italien</a></th>
+    </div>
+    <div class="container">
+        <div id="lang" class="lang"></div>
+    </div>
     <footer>
         <div id="message" class="message"></div>
         <div id="cs-loader" class="cs-loader" style="display:none">

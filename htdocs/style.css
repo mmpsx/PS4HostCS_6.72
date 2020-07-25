@@ -9,8 +9,11 @@ body {
   background-color: #cccccc;
 }
 .container {
-  width:100%;
-  position: relative;
+  width: 90%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 .content-title {
   font-family: "Bangers", cursive;
@@ -36,6 +39,14 @@ body {
   position:relative;
   padding:10px 10px;
 
+}
+.lang{
+  font-size:12px;
+}
+.btnLanguage{
+  padding:5px 25px;
+  text-decoration: none;
+  border: 1px solid black;
 }
 .btnHeader{
   padding:10px 25px;

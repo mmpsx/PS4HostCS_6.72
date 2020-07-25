@@ -101,6 +101,8 @@ function SCPAYLOAD(x) {
 }
 
 function load_jb() {
+  var lang = document.getElementById('lang');
+  lang.innerHTML = "";
   notif("Jailbreak en cours...");
   wait();
   var element = document.createElement("script");

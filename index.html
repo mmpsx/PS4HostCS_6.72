@@ -1,0 +1,66 @@
+<html manifest="offline.manifest">
+<head>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>PS4Host_6.72 V2.0.1 par Lgic-68 C.S</title>
+    <meta charset="utf-8" />
+    <script src="./assets/js/functions.js"></script>
+</head>
+<body>
+    <script>function print() { }</script>
+    <script src="common/exploit.js"></script>
+    <script src="common/helpers.js"></script>
+    <script src="common/malloc.js"></script>
+    <script src="common/rop.js"></script>
+    <script src="common/syscalls.js"></script>
+    <script src="common/syscalls2.js"></script>
+    <header id="header">
+        <div class="content-title">
+            <h1 id="title">Jailbreak Fw 6.72</h1>
+        </div>
+    </header>
+    <div id="headerbtn" class="headerbtn" align="center">
+        <a href="#" class="btnHeader" onclick="load_JB(); return false">Jailbreak</a>
+        <a href="#" class="btnHeader" onclick="load_binloader(); return false">BinLoader</a>
+    </div>
+    <div class="container">
+        <div id="lang" class="lang"></div>
+    </div>
+    <table id="table">
+        <tr align="center">
+            <th><a href="#" class="btn" onclick="load_mira(); return false">MIRA + HEN</a></th>
+            <th><a href="#" class="btn" onclick="inject_payload('dumper'); return false">Dumper</a></th>
+            <th><a href="#" class="btn" onclick="inject_payload('app2usb'); return false">App2Usb</a></th>
+            <th><a href="#" class="btn" onclick="inject_payload('ftp'); return false">FTP</a></th>
+            <th><a href="#" class="btn" onclick="inject_payload('desabler'); return false">Désactiver MAJ</a></th>
+            <th><a href="#" class="btn" onclick="inject_payload('enabler'); return false">Activer MAJ</a></th>
+            <th><a href="#" class="btn" onclick="inject_payload('history'); return false">Historique navigateur</a></th>
+        </tr>
+        <tr align="center">
+            <th><a href="#" class="btn" onclick="inject_payload('browser'); return false">Activer navigateur</a></th>
+            <th><a href="#" class="btn" onclick="inject_payload('backupDTB'); return false">SAV DTB</a></th>
+            <th><a href="#" class="btn" onclick="inject_payload('restoreDTB'); return false">Restaure DTB</a></th>
+            <th><a href="#" class="btn" onclick="inject_payload('rifs'); return false">Rennomer RIF</a></th>
+            <th><a href="#" class="btn" onclick="inject_payload('dumperKernel'); return false">Dumper Noyau</a></th>
+            <th><a href="#" class="btn" onclick="inject_payload('fan'); return false">Ventilo Turbo</a></th>
+            <th><a href="#" class="btn" onclick="inject_payload('kernelClock'); return false">Horloge noyau</a></th>
+        </tr>
+    </table>
+    <footer>
+        <div id="message" class="message"></div>
+        <div id="cs-loader" class="cs-loader" style="display:none">
+            <div class="cs-loader-inner">
+                <label></label>
+                <label></label>
+                <label></label>
+                <label></label>
+                <label></label>
+                <label></label>
+            </div>
+        </div>
+        <div class="overlay" id="cache-overlay">
+            <div id="progress"></div>
+        </div>
+    </footer>
+</body>
+
+</html>

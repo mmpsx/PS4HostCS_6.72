@@ -1,11 +1,12 @@
 <html manifest="offline.manifest">
+    <!--<html>-->
 <head>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <title>PS4Host_6.72 V2.0.1 par Lgic-68 C.S</title>
     <meta charset="utf-8" />
-    <script src="./assets/js/functions.js"></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>PS4Host_6.72 V2.0.1 par Logic-68 C.S</title>  
 </head>
 <body>
+    <script src="./assets/js/functions.js"></script>
     <script>function print() { }</script>
     <script src="common/exploit.js"></script>
     <script src="common/helpers.js"></script>
@@ -13,19 +14,48 @@
     <script src="common/rop.js"></script>
     <script src="common/syscalls.js"></script>
     <script src="common/syscalls2.js"></script>
+    <script>
+        function SC(x) {
+            return '<script src="' + x + '.js"></scr' + "ipt>";
+          }
+          function COMMON(x) {
+            return SC("common/" + x);
+          }
+          function BINLOADER(x) {
+            return SC("PAYLOADS/binloader/" + x);
+          }
+          function MIRA(x) {
+            return SC("PAYLOADS/mirahen/" + x);
+          }
+          
+          function JB(x) {
+            return "jb/" + x + ".js";
+          }
+          function WEBKIT(x) {
+            return "common/" + x + ".js";
+          }
+          function MIRABASE(x) {
+            return "PAYLOADS/mirahen/" + x + ".js";
+          }
+          /*
+          function SCPAYLOAD(x) {
+            return "PAYLOADS/" + x + ".js";
+          }*/
+          function SCPAYLOAD(x) {
+            return SC("PAYLOADS/" + x );
+          }
+        document.cookie = "exploit=jailbreak";
+    </script>
     <header id="header">
         <div class="content-title">
             <h1 id="title">Jailbreak Fw 6.72</h1>
         </div>
     </header>
     <div id="headerbtn" class="headerbtn" align="center">
-        <a href="#" class="btnHeader" onclick="load_JB(); return false">Jailbreak</a>
+        <a href="#" id="jb" class="btnHeader" onclick="load_JB(); return false">Jailbreak</a>
         <a href="#" class="btnHeader" onclick="load_binloader(); return false">BinLoader</a>
     </div>
-    <div class="container">
-        <div id="lang" class="lang"></div>
-    </div>
-    <table id="table">
+    <table>
         <tr align="center">
             <th><a href="#" class="btn" onclick="load_mira(); return false">MIRA + HEN</a></th>
             <th><a href="#" class="btn" onclick="inject_payload('dumper'); return false">Dumper</a></th>
@@ -47,7 +77,7 @@
     </table>
     <footer>
         <div id="message" class="message"></div>
-        <div id="cs-loader" class="cs-loader" style="display:none">
+        <div id="cs-loader" class="cs-loader">
             <div class="cs-loader-inner">
                 <label></label>
                 <label></label>

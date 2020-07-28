@@ -76,7 +76,7 @@ a.btnHeader{
 }
 table {
   position:relative;
-  top:40%;
+  top:20%;
   border-collapse: separate; 
   border-spacing: 0 10px; 
 }
@@ -114,10 +114,11 @@ th {
   text-align: center;
   color: red;
   font-size:25px;
-  bottom:25px;
+  bottom:45px;
 }
 .cs-loader {
   position: absolute;
+  display:none;
   top: 0;
   height: 100%;
   width: 100%;

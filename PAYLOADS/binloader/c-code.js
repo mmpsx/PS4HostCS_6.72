@@ -1,5 +1,5 @@
 try {
-    alert("\t\t\t\t\t\t\t\t\t\t\t\t\t\tCliquez sur \"OK\":\n\t\t\t\t\t\tNe quittez pas le navigateur\nUtilisez PS4 Injector sur le port 9021");
+    //alert("\t\t\t\t\t\t\t\t\t\t\t\t\t\tCliquez sur \"OK\":\n\t\t\t\t\t\tNe quittez pas le navigateur\nUtilisez PS4 Injector sur le port 9021");
     var ropchain = malloc(619088);
     var __swbuf_addr = 0;
     var main_ret = malloc(8);

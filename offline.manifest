@@ -1,5 +1,4 @@
 CACHE MANIFEST 
-functions.js
 index.html
 README.md
 assets\css\style.css
@@ -25,6 +24,7 @@ PAYLOADS\history.js
 PAYLOADS\kernelClock.js
 PAYLOADS\restoreDTB.js
 PAYLOADS\rifs.js
+PAYLOADS\todex.js
 PAYLOADS\binloader\c-code.js
 PAYLOADS\binloader\mira.js
 PAYLOADS\mirahen\c-code.js

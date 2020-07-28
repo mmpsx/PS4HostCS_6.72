@@ -5,7 +5,7 @@ PS4 Jailbreak Host 25/07/2020
   - Interface PS4Exploit_HOST 6.72 FR
   - compilation of payloads in french
   - Based on the work of Sleirsgoevy and DarModderVC
-  - Adding a script for language support
+  - Effective caching
 
 [![Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 

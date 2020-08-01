@@ -2,10 +2,11 @@
 PS4 Jailbreak Host 25/07/2020
 
 ### Develepment
-  - Interface PS4Exploit_HOST 6.72 FR
-  - compilation of payloads in french
+  - New Interface PS4Exploit_HOST 6.72 FR
+  - compilation of payloads and Mira in french
   - Based on the work of Sleirsgoevy and DarModderVC
   - Effective caching
+
 
 [![Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
@@ -28,3 +29,4 @@ PS4 Jailbreak Host 25/07/2020
   - TheFlow for the kernel exploit
   - Fire30 for the WebKit exploitconvert to Markdown
   - Sleirsgoevy and DarkModderVC for the optimization of the exploit Jailbreak
+  - Mugiwara for help and support

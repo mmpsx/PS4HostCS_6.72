@@ -1,4 +1,3 @@
-
 var i = 0;
 (function () {
   window.applicationCache.ondownloading;
@@ -123,6 +122,40 @@ function load_JB() {
   }, 2000);
 }
 
+function getEnvironmentInfo() {
+  var ua = navigator.userAgent;
+  var uaStringCheck = ua.substring(
+    ua.indexOf("5.0 (") + 5,
+    ua.indexOf(") Apple") - 7
+  );
+  var fwVersion = ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple"));
+
+  return fwVersion;
+}
+
+function alertEnvironment() {
+  var fwVersion = getEnvironmentInfo();
+  if (fwVersion === "6.72") {
+    var msg =
+      "Toutes nos félicitations! Nous avons détecté que votre PlayStation 4 fonctionne sous FW. " +
+      fwVersion +
+      ", qui est compatible avec PS4Host";
+
+    document.getElementById("message").innerHTML =
+      '<div style="color:green">' + msg + "</div>";
+  } else {
+    var msg =
+      "ATTENTION! Nous avons détecté que votre PlayStation 4 fonctionne sous FW. " +
+      fwVersion +
+      ", qui n'est pas compatible avec PS4Host";
+    document.getElementById("message").innerHTML =
+      '<div style="color:red">' + msg + "</div>";
+  }
+  setTimeout(function () {
+    document.getElementById("message").innerText = " ";
+  }, 5000);
+}
+
 function load_binloader() {
   if (readcookie() == "payload") {
     read_ptr_at(0);
@@ -162,12 +195,12 @@ function load_mira() {
 function inject_payload(payload) {
   document.cookie = "exploit=payload";
   buildHTML();
- 
+
   setTimeout(function () {
-    document.getElementById("message").innerHTML = "Injection de la charge utile";
+    document.getElementById("message").innerHTML =
+      "Injection de la charge utile";
     document.getElementById("cs-loader").style.display = "block";
     setTimeout(function () {
-
       document.write(MIRA("mira") + SCPAYLOAD(payload) + MIRA("c-code"));
     }, 100);
   }, 500);
@@ -175,7 +208,8 @@ function inject_payload(payload) {
 
 function buildHTML() {
   if (document.getElementById("listmenu") == null) {
-    document.write("<head>" +
+    document.write(
+      "<head>" +
         '<meta charset="utf-8" />' +
         '<link rel="stylesheet" href="./assets/css/style.css">' +
         "<title>PS4HostCS V2.0.2 par Logic-68 C.S</title>" +

@@ -6,6 +6,7 @@ PS4 Jailbreak Host 25/07/2020
   - compilation of payloads and Mira in french
   - Based on the work of Sleirsgoevy and DarModderVC
   - Effective caching
+  - Check Firmware version and alert
 
 
 [![Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)

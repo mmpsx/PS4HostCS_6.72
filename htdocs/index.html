@@ -1,15 +1,15 @@
 <html manifest="offline.manifest">
-<!--<html>-->
-
+  <!--<html>-->
 <head>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="./assets/css/style.css">
-  <title>PS4Host V2.0.2 par Logic-68 C.S</title>
-  
+  <title>PS4Host V2.0.3 par Logic-68 C.S</title>
+
 </head>
 
 <body>
-<script src="./assets/js/functions.js"></script>
+
+  <script src="./assets/js/functions.js"></script>
   <script>function print() { }</script>
   <script src="common/exploit.js"></script>
   <script src="common/helpers.js"></script>
@@ -31,7 +31,7 @@
     function MIRA(x) {
       return SC("PAYLOADS/mirahen/" + x);
     }
-    
+
     function JB(x) {
       return "jb/" + x + ".js";
     }
@@ -41,7 +41,7 @@
     function MIRABASE(x) {
       return "PAYLOADS/mirahen/" + x + ".js";
     }
-    
+
     function SCPAYLOAD(x) {
       return SC("PAYLOADS/" + x);
     }
@@ -51,13 +51,9 @@
     <div class="content-title">
       <h1 id="title">Jailbreak Fw 6.72</h1>
     </div>
-    <div class="overlay" id="cache-overlay">
-      <div id="progress">
-        <div align="center" id="myBar"></div>
-      </div>
-    </div>
+    
   </header>
-  <div class="container">
+  <div id="menulist" class="container">
     <ul id="menu">
       <li id="li0"><a href="#" class="deroulant" id="deroulant0">Exploits</a>
         <ul class="submenu" id="submenu0">
@@ -100,8 +96,23 @@
       </li>
     </ul>
   </div>
+  <div id="message" class="message"></div>
+
+
+  <div class="overlay" id="cache-overlay">
+      
+    <div id="progress">
+      <div align="center" id="myBar"></div>
+    </div>
+  </div>
+
+
+
   <footer>
-    <div id="message" class="message"></div>
+    <div id="alertfw"></div>
+    <hr>
+    <div id="firmware"></div>
+    
     <div id="cs-loader" class="cs-loader">
       <div class="cs-loader-inner">
         <label></label>
@@ -112,13 +123,12 @@
         <label></label>
       </div>
     </div>
-    <h1 class="hide" id="hide"onclick="DebugMode()"><script>document.write(getEnvironmentInfo());
-    </script></h1>
-    
-    <script>alertEnvironment();</script>
-    <script src="./assets/js/jquery-3.3.1.min.js"></script>
-  </footer>
+   
 
+    
+  </footer>
+<script src="./assets/js/style.js"></script>
+    <script src="./assets/js/jquery-3.3.1.min.js"></script>
 </body>
 
 </html>

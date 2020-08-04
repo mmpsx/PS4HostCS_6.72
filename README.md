@@ -2,12 +2,15 @@
 PS4 Jailbreak Host 25/07/2020
 
 ### Develepment
-  - New Interface PS4Exploit_HOST 6.72 FR
+  - New Interface PS4HostCS v2.0.1 6.72 FR
   - compilation of payloads and Mira in french
-  - Based on the work of Sleirsgoevy and DarModderVC
+  - Based on the work of Sleirsgoevy, Leeful and DarModderVC
   - Effective caching
   - Check Firmware version and alert
 
+  ### 04/08/2020 PS4HostCS V2.0.4
+  - rewrite all the code
+  - Improved loading and speed of achievements
 
 [![Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
@@ -18,7 +21,8 @@ PS4 Jailbreak Host 25/07/2020
   - Open your PS4 browser to http: / your local PC IP: 8000
   - Enjoy
   ### Or Online
-  http://dev-web68.fr
+  http://dev-web68.fr With Caching
+  http://dev-web68.fr/OnlineHost Not caching Online only
 
 ### Recommandations
 - Avoid the page refresh for the moment it will cause you a message "Insufficient system memory"
@@ -29,5 +33,5 @@ PS4 Jailbreak Host 25/07/2020
 # CréditsFeatures!
   - TheFlow for the kernel exploit
   - Fire30 for the WebKit exploitconvert to Markdown
-  - Sleirsgoevy and DarkModderVC for the optimization of the exploit Jailbreak
+  - Sleirsgoevy, Leeful and DarkModderVC for the optimization of the exploit Jailbreak and Webkit
   - Mugiwara for help and support

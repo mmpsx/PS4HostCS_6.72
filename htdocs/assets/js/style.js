@@ -119,7 +119,7 @@ function binloader_finished() {
 }
 function load_binloader() {
   if (readcookie("exploit") != "null") {
-    document.getElementById("message").innerHTML =
+   document.getElementById("message").innerHTML =
       "Vous venez d'activer Mira + Hen !!! Pour utiliser Binloader le Navigateur doit être Quittez par la touche PS d'abords.";
     setTimeout(function () {
       document.getElementById("message").innerHTML =
@@ -141,7 +141,7 @@ function load_binloader() {
         document.cookie = "exploit=binloader";
         setTimeout(function () {
           var element = document.createElement("script");
-          element.src = BINLOADER("c-code");
+          element.src = SCMIRA("c-code");
           document.getElementsByTagName("head")[0].appendChild(element);
         }, 3000);
       }, 3000);

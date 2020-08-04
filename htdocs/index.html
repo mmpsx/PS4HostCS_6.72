@@ -1,57 +1,54 @@
 <html manifest="offline.manifest">
-  <!--<html>-->
+<html>
 <head>
   <meta charset="utf-8" />
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <title>PS4Host V2.0.3 par Logic-68 C.S</title>
-
+  <title>PS4HostCS V2.0.4 par Logic-68 C.S</title>
+  <link rel="stylesheet" href="assets/css/default.css">
 </head>
 
 <body>
+  <script>
+    document.cookie = "exploit=null";
+    var ua = navigator.userAgent;
+    var fwVersion = ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple"));
+    if (fwVersion === "6.72") {
+      var i = 0;
+      var msg = "Toutes nos félicitations! Nous avons détecté que votre PlayStation 4 fonctionne sous FW " + fwVersion + ", qui est compatible avec PS4HostCS";
+      window.applicationCache.ondownloading = function () {
+        document.getElementById("alertfw").innerHTML = '<div class="green">' + msg + "</div>";
+      };
+      window.applicationCache.onprogress = function (a) {
+        document.getElementById("cache-overlay").style.display = "block";
+        document.getElementById("progress").innerHTML = '<div align="center" id="myBar"></div>';
 
-  <script src="./assets/js/functions.js"></script>
+        i = Math.round(100 * (a.loaded / a.total));
+        document.getElementById("myBar").style.width = i + "%";
+        if (i == 0) { document.getElementById("myBar").innerHTML = ""; } else { document.getElementById("myBar").innerHTML = i + "%"; }
+      };
+      window.applicationCache.oncached = function () {
+        document.getElementById("cache-overlay").style.display = "none";
+        document.getElementById("alertfw").innerHTML = "";
+        document.getElementById("message").innerHTML = '<div align="center" style="color:green">Mise en cache réussi</div>';
+        setTimeout(function () {
+          document.getElementById("message").innerHTML = '<div align="center" style="color:white">Fermez votre Navigateur, couper l\'Internet, puis ouvrez a nouveau votre Navigateur</div>';
+          setTimeout(function () {
+            document.getElementById("message").innerHTML = "";
+          }, 6000);
+        }, 2000);
+      };
+    } else {
+      var alertfirmware = true;
+    }
+  </script>
+  <script src="assets/js/functions.js"></script>
   <script>function print() { }</script>
   <script src="common/exploit.js"></script>
-  <script src="common/helpers.js"></script>
-  <script src="common/malloc.js"></script>
-  <script src="common/rop.js"></script>
-  <script src="common/syscalls.js"></script>
-  <script src="common/syscalls2.js"></script>
 
-  <script>
-    function SC(x) {
-      return '<script src="' + x + '.js"></scr' + "ipt>";
-    }
-    function COMMON(x) {
-      return SC("common/" + x);
-    }
-    function BINLOADER(x) {
-      return SC("PAYLOADS/binloader/" + x);
-    }
-    function MIRA(x) {
-      return SC("PAYLOADS/mirahen/" + x);
-    }
-
-    function JB(x) {
-      return "jb/" + x + ".js";
-    }
-    function WEBKIT(x) {
-      return "common/" + x + ".js";
-    }
-    function MIRABASE(x) {
-      return "PAYLOADS/mirahen/" + x + ".js";
-    }
-
-    function SCPAYLOAD(x) {
-      return SC("PAYLOADS/" + x);
-    }
-    document.cookie = "exploit=jailbreak";
-  </script>
   <header id="header">
     <div class="content-title">
       <h1 id="title">Jailbreak Fw 6.72</h1>
+      <hr>
     </div>
-    
   </header>
   <div id="menulist" class="container">
     <ul id="menu">
@@ -60,7 +57,7 @@
           <li><a href="#" id="jailbreak" class="submenua" onclick="load_JB(); return false">Jailbreak</a></li>
           <li><a href="#" id="mirahen" class="submenua" onclick="load_mira(); return false">Mira+HEN</a></li>
           <li><a href="#" id="binloader" class="submenua" onclick="load_binloader(); return false">Binloader</a></li>
-          <li><a href="#" id="binloader" class="submenua" onclick="inject_payload('todex'); return false">DEX</a></li>
+          <!--<li><a href="#" id="binloader" class="submenua" onclick="inject_payload('todex'); return false">DEX</a></li>-->
         </ul>
       </li>
       <li id="li1"><a href="#" class="deroulant" id="deroulant1">Système</a>
@@ -71,25 +68,25 @@
         </ul>
       </li>
       <li id="li2"><a href="#" class="deroulant" id="deroulant2">Navigateur</a>
-        <ul class="submenu" id="subnavigator">
+        <ul class="submenu" id="submenu2">
           <li><a href="#" id="history" onclick="inject_payload('history'); return false">Activer Historique</a></li>
           <li><a href="#" id="browser" onclick="inject_payload('browser'); return false">Activer Navigateur</a></li>
         </ul>
       </li>
       <li id="li3"><a href="#" class="deroulant" id="deroulant3">Applications</a>
-        <ul class="submenu" id="subapplication">
+        <ul class="submenu" id="submenu3">
           <li><a href="#" id="dumper" onclick="inject_payload('dumper'); return false">Dumper</a></li>
           <li><a href="#" id="app2usb" onclick="inject_payload('app2usb'); return false">App2Usb</a></li>
           <li><a href="#" id="rifs" onclick="inject_payload('rifs'); return false">Renomer RIF</a></li>
         </ul>
       </li>
       <li id="li4"><a href="#" class="deroulant" id="deroulant4">FTP</a>
-        <ul class="submenu" id="subftp">
+        <ul class="submenu" id="submenu4">
           <li><a href="#" id="ftp" onclick="inject_payload('ftp'); return false">FTP VTX</a></li>
         </ul>
       </li>
       <li id="li5"><a href="#" class="deroulant" id="deroulant5">Mise à jour</a>
-        <ul class="submenu" id="subupdate">
+        <ul class="submenu" id="submenu5">
           <li><a href="#" id="enabler" onclick="inject_payload('desabler'); return false">Activer</a></li>
           <li><a href="#" id="desabler" onclick="inject_payload('enabler'); return false">Désactiver</a></li>
         </ul>
@@ -97,22 +94,15 @@
     </ul>
   </div>
   <div id="message" class="message"></div>
-
-
+  <hr>
+  <div id="firmware"></div>
   <div class="overlay" id="cache-overlay">
-      
     <div id="progress">
       <div align="center" id="myBar"></div>
     </div>
   </div>
-
-
-
   <footer>
     <div id="alertfw"></div>
-    <hr>
-    <div id="firmware"></div>
-    
     <div id="cs-loader" class="cs-loader">
       <div class="cs-loader-inner">
         <label></label>
@@ -123,12 +113,9 @@
         <label></label>
       </div>
     </div>
-   
-
-    
   </footer>
-<script src="./assets/js/style.js"></script>
-    <script src="./assets/js/jquery-3.3.1.min.js"></script>
+  <script>
+  </script>
+  <script src="assets/js/style.js"></script>
 </body>
-
 </html>

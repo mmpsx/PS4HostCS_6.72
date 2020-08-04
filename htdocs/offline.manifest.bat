@@ -28,3 +28,6 @@ set "firstLineReady=1"
 ) > offline.manifest
 del test.txt
 
+echo offline.manifest created!!
+
+sleep 2

@@ -1,5 +1,5 @@
 <html manifest="offline.manifest">
-<html>
+  <html>
 <head>
   <meta charset="utf-8" />
   <title>PS4HostCS V2.0.4 par Logic-68 C.S</title>
@@ -11,7 +11,7 @@
     document.cookie = "exploit=null";
     var ua = navigator.userAgent;
     var fwVersion = ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple"));
-    if (fwVersion === "6.72") {
+    if (fwVersion === "6.72" || fwVersion === "8.00") {
       var i = 0;
       var msg = "Toutes nos félicitations! Nous avons détecté que votre PlayStation 4 fonctionne sous FW " + fwVersion + ", qui est compatible avec PS4HostCS";
       window.applicationCache.ondownloading = function () {
@@ -55,7 +55,8 @@
       <li id="li0"><a href="#" class="deroulant" id="deroulant0">Exploits</a>
         <ul class="submenu" id="submenu0">
           <li><a href="#" id="jailbreak" class="submenua" onclick="load_JB(); return false">Jailbreak</a></li>
-          <li><a href="#" id="mirahen" class="submenua" onclick="load_mira(); return false">Mira+HEN</a></li>
+          <!--<li><a href="#" id="mirahen" class="submenua" onclick="load_mira(); return false">Mira+HEN</a></li>-->
+          <li><a href="#" id="mirahen" class="submenua" onclick="load_mira(); return false">mugiwaramirahen</a></li>
           <li><a href="#" id="binloader" class="submenua" onclick="load_binloader(); return false">Binloader</a></li>
           <!--<li><a href="#" id="binloader" class="submenua" onclick="inject_payload('todex'); return false">DEX</a></li>-->
         </ul>
@@ -65,6 +66,8 @@
           <li><a href="#" id="dumperkernel" onclick="inject_payload('dumperKernel'); return false">Dumper Noyau</a></li>
           <li><a href="#" id="kernelclock" onclick="inject_payload('kernelClock'); return false">Horloge Noyau</a></li>
           <li><a href="#" id="fan" onclick="inject_payload('fan'); return false">Ventilo Turbo</a></li>
+          <li><a href="#" id="fan" onclick="inject_payload('fan55'); return false">Ventilo 55</a></li>
+          <li><a href="#" id="fan" onclick="inject_payload('fan70'); return false">Ventilo 70</a></li>
         </ul>
       </li>
       <li id="li2"><a href="#" class="deroulant" id="deroulant2">Navigateur</a>

@@ -63,7 +63,7 @@ function load_mira() {
     document.cookie = "exploit=mira";
     setTimeout(function () {
       var element = document.createElement("script");
-      element.src = SCMIRA("mirahen");
+      element.src = SCMIRA("mugiwaramirahen");
       document.getElementsByTagName("head")[0].appendChild(element);
       var element = document.createElement("script");
       element.src = SCMIRA("c-code");

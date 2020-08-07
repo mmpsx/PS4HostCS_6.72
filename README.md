@@ -23,7 +23,7 @@ PS4 Jailbreak Host 25/07/2020
 - New c-code Jailbreak and Mira
 - Add Todex, WebRTE, Linux, PS4Trainer (no fr)
 
-- MiraNo fficial by Muguiwara
+- Mira No official by Muguiwara
   PVS-Studio
   Homebrew Enabler (HEN)
   Emulated Registry (EmuReg)

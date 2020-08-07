@@ -17,7 +17,9 @@ const relaunchBinloader =
   "Relançez Binloader pour envoyer une autre charge utile";
 const desactivateHost = "PS4HostCS a été désactivé";
 const wait_pl = "En attente de charge utile";
+
 const ready_pl = "est maintenant démarrer!";
+
 const start_pl = "Démarrage de la la Charge utile";
 const relaunch_for_mira =
   "Vous venez d'activer Mira + Hen !!! Pour utiliser Binloader le Navigateur doit être Quittez par la touche PS d'abords.";
@@ -69,7 +71,7 @@ function pl_loaded() {
     setInnerText(message, start_pl);
     setTimeout(function () {
       if (exploit === "Binloader") setInnerText(message, relaunchBinloader);
-      else setInnerText(message, exploit + " " + ready_pl);
+      else setInnerText(message, exploit + " " + language[french].ready_pl);
       if (spoof === true) setInnerText(message, restartNavigator);
       setTimeout(function () {
         displayNone(csLoader);

@@ -1,3 +1,6 @@
+let langua = JSON.parse(language);
+alert("test");
+alert(langua);
 function JB(x) {
   return "jb/" + x + ".js";
 }

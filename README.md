@@ -11,6 +11,12 @@ PS4 Jailbreak Host 25/07/2020
   ### 04/08/2020 PS4HostCS V2.0.4
   - rewrite all the code
   - Improved loading and speed of achievements
+  - Temperature threshold control
+  - Spoof 8.00 include Mira + HEN
+   ### 07/08/2020 PS4HostCS V2.0.5
+   - Rewrite and optimize all the code
+   - New c-code Jailbreak and Mira
+   - Add Todex, WebRTE, Linux, PS4Trainer (no fr)
 
 [![Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 

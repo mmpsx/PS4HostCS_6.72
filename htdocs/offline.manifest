@@ -1,5 +1,6 @@
 CACHE MANIFEST 
 index.html
+assets\css\default.css
 assets\css\default.min.css
 assets\js\functions.js
 assets\js\style.js

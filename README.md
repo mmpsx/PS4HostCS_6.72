@@ -12,7 +12,7 @@ PS4 Jailbreak Host 25/07/2020
   - rewrite all the code
   - Improved loading and speed of achievements
   - Temperature threshold control
-  - Spoof 8.00 include Mira + HEN
+  - Spoof 8.00 include Mira + HEN no official
    ### 07/08/2020 PS4HostCS V2.0.5
    - Rewrite and optimize all the code
    - New c-code Jailbreak and Mira

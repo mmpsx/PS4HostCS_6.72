@@ -41,3 +41,4 @@ PS4 Jailbreak Host 25/07/2020
   - Fire30 for the WebKit exploitconvert to Markdown
   - Sleirsgoevy, Leeful and DarkModderVC for the optimization of the exploit Jailbreak and Webkit
   - Mugiwara for help and support
+  - Specter for Exploit

@@ -183,6 +183,7 @@ function inject_payload(payload) {
 /***********************Binloader***************************/
 function load_binloader() {
   if (exploit != null) {
+    exploit = null;
     setInnerText(message, relaunch_for_mira);
     setTimeout(function () {
       setInnerText(message, quit_navigator);

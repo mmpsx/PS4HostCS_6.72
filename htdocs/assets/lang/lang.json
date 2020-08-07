@@ -1,0 +1,43 @@
+{
+  "french": 
+    {
+      "jbsucces": "Votre PS4 est maintenant Jailbreak jusqu'au prochain redémarrage.", 
+      "jbfailed": "Le jailbreak a échoué! Cliquez sur Fermer le Navigateur, redémarrez votre PS4 et réessayez.", 
+      "badFw": "ATTENTION! Nous avons détecté que votre Pla yStation 4 fonctionne sous FW"  +checkFw() + ", qui n'est pas compatible avec PS4HostCS";, 
+      "relaunchBinloader": , 
+      "desactivateHost": , 
+      "wait_pl": , 
+      "ready_pl": , 
+      "relaunch_for_mira": , 
+      "quit_navigator": , 
+      "wait_pl_binloader": , 
+      "alertSpoof": , 
+      "restartSystem": , 
+      "restartNavigator": , 
+      "threshold ": , 
+      "wait_jb": , 
+      "miraNoOfficial": , 
+      "miraOfficial": , 
+    },
+  "english": 
+  {
+    "jbsucces": , 
+    "jbfailed": , 
+    "badFw": , 
+    "relaunchBinloader": , 
+    "desactivateHost": , 
+    "wait_pl": , 
+    "ready_pl": , 
+    "relaunch_for_mira": , 
+    "quit_navigator": , 
+    "wait_pl_binloader": , 
+    "alertSpoof": , 
+    "restartSystem": , 
+    "restartNavigator": , 
+    "threshold ": , 
+    "wait_jb": , 
+    "miraNoOfficial": , 
+    "miraOfficial": , 
+  }
+
+}

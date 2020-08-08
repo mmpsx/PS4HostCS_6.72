@@ -20,27 +20,5 @@
     "wait_jb": "Jailbreak en cours...",
     "miraNoOfficial": "Mira non Officiel",
     "miraOfficial": "Mira Officiel"
-  },
-  "english": {
-   "jbsucces": "Votre PS4 est maintenant Jailbreak jusqu'au prochain redémarrage.",
-    "jbfailed": "Le jailbreak a échoué! Cliquez sur Fermer le Navigateur, redémarrez votre PS4 et réessayez.",
-    "badFw": "ATTENTION! Nous avons détecté que votre Pla yStation 4 fonctionne sous FW",
-    "bedFw2": ", qui n'est pas compatible avec PS4HostCS",
-    "relaunchBinloader": "Relançez Binloader pour envoyer une autre charge utile",
-    "desactivateHost": "PS4HostCS a été désactivé",
-    "wait_pl": "En attente de charge utile",
-
-    "ready_pl": "est maintenant démarrer!",
-    
-    "relaunch_for_mira": "Démarrage de la la Charge utile",
-    "quit_navigator": "Vous venez d'activer Mira + Hen !!! Pour utiliser Binloader le Navigateur doit être Quittez par la touche PS d'abords.",
-    "wait_pl_binloader": "Utilisez PS4 Injector sur port 9021.Cliquez sur Connecter...",
-    "alertSpoof": "Attention le spoof 8.00 a été détecté Actif",
-    "restartSystem": "Veuillez redémarrer le système pour le désactivé avant d'utiliser Mira Officiel",
-    "restartNavigator": "Veuillez redémarrer votre navigateur vour activer le spoof",
-    "threshold ": "Seuil de Temp /",
-    "wait_jb": "Jailbreak en cours...",
-    "miraNoOfficial": "Mira non Officiel",
-    "miraOfficial": "Mira Officiel"
   }
 }

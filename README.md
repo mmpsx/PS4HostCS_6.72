@@ -68,4 +68,4 @@ http://dev-web68.fr/OnlineHost Not caching Online only
 - Fire30 for the WebKit exploitconvert to Markdown
 - Sleirsgoevy, Leeful and DarkModderVC for the optimization of the exploit Jailbreak and Webkit
 - Mugiwara for help and support
-- Specter for Exploit
+- Specter, ChendoChap for Exploit

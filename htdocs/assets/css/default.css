@@ -17,6 +17,7 @@ body {
 .content-title {
     position: relative;
     padding: 10px 20px;
+    height:75px;
     background: #00307f;
     border: 1px solid #fff;
     color: #fff;
@@ -205,10 +206,10 @@ body {
     padding: 10px;
 }
 #menu li li a {
-    font-size: 14px;
+    font-size: 12px;
 }
 #menu li li a:hover {
-    font-size: 16px;
+    font-size: 14px;
 }
 footer {
     position: fixed;
@@ -232,7 +233,6 @@ hr {
     right: 0;
 }
 #fanprogress {
-   /* position: fixed;*/
     color: #fff;
     bottom: 15px;
     left: 10px;
@@ -243,6 +243,7 @@ hr {
     height: 10px;
     border: 1px solid #fff;
     border-radius: 15px;
+    margin: 20px 0 0 20px;
 }
 .level {
     width: 20px;
@@ -318,7 +319,6 @@ hr {
     margin-left: 20px;
     display: inline-block;
 }
-
 .red {
     color: red;
     position: absolute;
@@ -383,4 +383,63 @@ hr {
     -webkit-transform: scale(2) rotate(180deg);
     transform: scale(2) rotate(180deg);
     box-shadow: 2px 2px 4px 0 rgba(255, 255, 255, 0.5), -2px -2px 4px 0 rgba(116, 125, 136, 0.2), inset -2px -2px 4px 0 rgba(255, 255, 255, 0.5), inset 2px 2px 4px 0 rgba(116, 125, 136, 0.3);
+}
+.language{
+    position: relative;
+    border:1px solid #fff;
+    height:40px;
+    width:100%;
+    color:#fff;
+    padding:5px;
+    text-align:center;
+    display:none;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    transition: 0.3s all 0.3s;
+}
+#choicelangue{
+    position:relative;
+    border:1px solid #fff;
+    color:#fff;
+    border-radius:0 0 10px 10px;
+    width:100px;
+    margin: auto;
+    height:15px;
+    text-align:center;
+    font-size:10px;
+}
+.hidelanguage{
+    position: relative;
+    border:1px solid #fff;
+    width:100%;
+    color:#fff;
+    text-align:center;
+    max-height: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    transition: 0.3s all 0.3s;
+}
+.showlanguage{
+    position: relative;
+    border:1px solid #fff;
+    width:100%;
+    color:#fff;
+    text-align:center;
+    max-height: 40px;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    transition: 0.3s all 0.3s;
+}
+.checkbox{
+    margin:10px 10px;
+    
+}
+#choicelangue>button{
+    border:none;
+    background:transparent;
+    color:#fff;
+    font-size:10px;
 }

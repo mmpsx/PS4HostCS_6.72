@@ -4,19 +4,24 @@ function JB(x) {
 function SC(x) {
   return '<script src="' + x + '.js"></scr' + "ipt>";
 }
-function MIRA(x) {
-  return SC("PAYLOADS/mirahen/" + x);
-}
 function BINLOADER(x) {
-  return "PAYLOADS/binloader/" + x + ".js";
+  return "PL_" + plLangue() + "/binloader/" + x + ".js";
 }
 function SCMIRA(x) {
-  return "PAYLOADS/mirahen/" + x + ".js";
+  return "PL_" + plLangue() + "/mirahen/" + x + ".js";
 }
 function PAYLOAD(x) {
-  return "PAYLOADS/" + x + ".js";
+  return "PL_" + plLangue() + "/" + x + ".js";
 }
-
+function plLangue() {
+  let pl_langue;
+  switch (defaultLangue) {
+    case 0:
+      return (pl_langue = "FR");
+    case 1:
+      return (pl_langue = "EN");
+  }
+}
 function removeScript(nb) {
   let head = document.getElementsByTagName("head")[0];
   let scripts = head.getElementsByTagName("script");
@@ -25,13 +30,32 @@ function removeScript(nb) {
     nb--;
   }
 }
-function readcookie(ex) {
+function createCookie(name, value) {
+  let expire = addDays(30);
+  document.cookie = name + "=" + value + ";expires=" + expire.toUTCString();
+}
+function getCookie(name) {
+  var dc = document.cookie;
+  var prefix = name + "=";
+  var begin = dc.indexOf("; " + prefix);
+  if (begin == -1) {
+    begin = dc.indexOf(prefix);
+    if (begin != 0) return null;
+  } else return readCookie(name);
+}
+function readCookie(ex) {
   const cookieValue = document.cookie
     .split("; ")
     .find((row) => row.startsWith(ex))
     .split("=")[1];
 
   return cookieValue;
+}
+function deleteCookie(cname) {
+  var d = new Date();
+  d.setTime(d.getTime() - 1000 * 60 * 60 * 24);
+  var expires = "expires=" + d.toGMTString();
+  window.document.cookie = cname + "=" + "; " + expires;
 }
 function createTempDefault(value) {
   let expire = addDays(30);
@@ -68,14 +92,18 @@ function setInnerHTML(elem, str) {
 function setInnerText(elem, str) {
   if (elem) elem.innerHTML = str;
 }
-
+function languncheck(elem) {
+  if (elem) elem.checked = false;
+}
+function ifelemexist(elem, name) {
+  if (elem) name = elem;
+}
 function addDays(days) {
   let result = new Date();
   result.setDate(result.getDate() + days);
   return result;
 }
 function newScript(func) {
-  
   let element = document.createElement("script");
   element.src = func;
   return document.getElementsByTagName("head")[0].appendChild(element);
@@ -96,9 +124,23 @@ function barFan(barfan, level) {
     barfan += '<button id="' + i + 'btn" class="levelclear"></button>';
   return (barfan +=
     '</div><div id="writelevel">' +
-    threshold +
-    readcookie("levelTemp") +
+    tabJSON[0][defaultLangue].threshold +
+    readCookie("levelTemp") +
     "°" +
     "</div>");
 }
-createTempDefault("56");
+function injection() {
+  setInnerText(message, tabJSON[0][defaultLangue].inject);
+}
+function reception() {
+  setInnerText(message, tabJSON[0][defaultLangue].injectwell);
+}
+let fwVersion = null;
+    function checkFw() {
+      let ua = navigator.userAgent;
+      fwVersion = ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple"));
+      return fwVersion;
+      //for test interface of PC 
+     // return fwVersion = "6.72";
+    }
+createTempDefault("65");

@@ -22,7 +22,6 @@ PS4 Jailbreak Host 25/07/2020
 - Rewrite and optimize all the code
 - New c-code Jailbreak and Mira
 - Add Todex, WebRTE, Linux, PS4Trainer (no fr)
-
 - Mira No official by Muguiwara
   PVS-Studio
   Homebrew Enabler (HEN)
@@ -39,6 +38,14 @@ PS4 Jailbreak Host 25/07/2020
   Spoof 8.00 PSVR (Thanks @Leeful74) (6.72)
   debug trophies on retail Enabler (6.72)(Thanks Zecoxao)
   Update freebsd-include v3 (Thanks specter)
+
+### 07/08/2020 PS4HostCS V2.0.5
+- Now the Host has a French and English version
+- Add of Sistro HEN 2.1.3
+- Add HEN 2.1.5 no official by Muguiwara
+- Add Mira + HEN V7 no official by Muguiwara
+- Payload FTP and Dumper update
+- New temperature threshold
 
 [![Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 

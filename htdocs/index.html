@@ -9,7 +9,7 @@
 <body>
   <script src="assets/lang/lang.json"></script>
   <script>
-    let defaultLangue = 1;//for caching ENGLISH select 1 FRENCH select 0
+    let defaultLangue = 0;//for caching ENGLISH select 1 FRENCH select 0
     let fwVersion = null;
     let alertfirmware = false;
     let nb = 0;
@@ -31,11 +31,14 @@
         const progress = document.getElementById("progress");
         message.innerHTML = '<div class="green">' + tabJSON[0][defaultLangue].goodFw + checkFw() + tabJSON[0][defaultLangue].goodFw2 + "</div>";
       };
+      window.applicationCache.onerror = function () {
+        load_JB();
+    };
       window.applicationCache.oncached = function () {
         overlay.style.display = "none"; message.innerHTML = '<div align="center" style="color:green">' + tabJSON[0][defaultLangue].cachedsucces + "</div>";
         setTimeout(function () {
           message.innerHTML = '<div align="center" style="color:white">' + tabJSON[0][defaultLangue].quitNav + "</div>";
-          setTimeout(function () { message.innerHTML = ""; }, 6000);
+          setTimeout(function () { load_JB()}, 6000);
         }, 2000);
       };
       window.applicationCache.onupdateready = function () {
@@ -51,7 +54,6 @@
         if (nb == 0) { mybar.innerHTML = ""; }
         else { mybar.innerHTML = nb + "%"; }
       };
-
     } else { alertfirmware = true; }
   </script>
   <script src="assets/js/functions.js"></script>

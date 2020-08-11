@@ -2,7 +2,7 @@
 let level = 0;
 let spoof = false;
 let title = document.getElementsByTagName("title");
-let version = "2.0.7";
+let version = "2.1.7";
 let exploit = null;
 /*********************Définition des contantes**********************/
 const menuList = document.getElementById("menulist");
@@ -360,15 +360,13 @@ function displayCheckBox() {
   });
 }
 function buildHTML() {
+
   let buildHTML =
     '<ul id="menu">' +
     '<li id="li0"><a href="#" class="deroulant" id="scrolling_menu0">' +
     tabJSON[2][defaultLangue].exploit +
     "</a>" +
     '<ul class="submenu" id="submenu0">' +
-    '<li><a href="#" class="custom-btn btn" onclick="load_JB(); return false">' +
-    tabJSON[1][defaultLangue].jb +
-    "</a></li>" +
     '<li><a href="#" class="custom-btn btn" onclick="load_mira(\'noofficial\'); return false">' +
     tabJSON[1][defaultLangue].mira +
     "</a>" +

@@ -1,68 +1,64 @@
 <html manifest="offline.manifest">
+<html>
+
 <head>
   <title></title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="assets/css/default.min.css">
 </head>
+
 <body>
   <script src="assets/lang/lang.json"></script>
   <script>
-    let defaultLangue = 0;
+    let defaultLangue = 0;//for caching ENGLISH select 1 FRENCH select 0
     let fwVersion = null;
     let alertfirmware = false;
     let nb = 0;
     let tabJSON = [];
     let datas = [data, home, scrolling_menu];
-    for (let i = 0; i < datas.length; i++) {
-      tabJSON[i] = JSON.parse(datas[i]);
-    }
+    for (let i = 0; i < datas.length; i++) { tabJSON[i] = JSON.parse(datas[i]); }
+
     function checkFw() {
       let ua = navigator.userAgent;
-        fwVersion = ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple"));
-        return fwVersion;
+      fwVersion = ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple"));
+      return fwVersion;
       //for test interface of PC
       //return fwVersion = "6.72";
     }
     if (checkFw() === "6.72" || checkFw() === "8.00") {
       window.applicationCache.ondownloading = function () {
-        document.getElementById("message").innerHTML =
-          '<div class="green">' +
-          tabJSON[0][defaultLangue].goodFw +
-          checkFw() +
-          tabJSON[0][defaultLangue].goodFw2 + "</div>";
-      };
-      window.applicationCache.onprogress = function (a) {
-        document.getElementById("cache-overlay").style.display = "block";
-        document.getElementById("progress").innerHTML = '<div align="center" id="mybar"></div>';
-        let mybar = document.getElementById("mybar");
-        nb = Math.round(100 * (a.loaded / a.total));
-        mybar.style.width = nb + "%";
-        if (nb == 0) {
-          mybar.innerHTML = "";
-        } else {
-          mybar.innerHTML = nb + "%";
-        }
+        const message = document.getElementById("message");
+        const overlay = document.getElementById("cache-overlay");
+        const progress = document.getElementById("progress");
+        message.innerHTML = '<div class="green">' + tabJSON[0][defaultLangue].goodFw + checkFw() + tabJSON[0][defaultLangue].goodFw2 + "</div>";
       };
       window.applicationCache.oncached = function () {
-        document.getElementById("cache-overlay").style.display = "none";
-        document.getElementById("message").innerHTML =
-          '<div align="center" style="color:green">' +
-          tabJSON[0][defaultLangue].cachedsucces +
-          "</div>";
+        overlay.style.display = "none"; message.innerHTML = '<div align="center" style="color:green">' + tabJSON[0][defaultLangue].cachedsucces + "</div>";
         setTimeout(function () {
-          document.getElementById("message").innerHTML = '<div align="center" style="color:white">' +
-            tabJSON[0][defaultLangue].quitNav +
-            "</div>";
-          setTimeout(function () {
-            document.getElementById("message").innerHTML = "";
-          }, 6000);
+          message.innerHTML = '<div align="center" style="color:white">' + tabJSON[0][defaultLangue].quitNav + "</div>";
+          setTimeout(function () { message.innerHTML = ""; }, 6000);
         }, 2000);
       };
-    } else {
-      alertfirmware = true;
-    }
-  </script>
+      window.applicationCache.onupdateready = function () {
+        window.applicationCache.swapCache();
+        overlay.style.display = "none"; message.innerHTML = '<div align="center" style="color:green">' + tabJSON[0][defaultLangue].cachedsucces + "</div>";
+        setTimeout(function () {
+          message.innerHTML = '<div align="center" style="color:white">' + tabJSON[0][defaultLangue].quitNav + "</div>";
+          setTimeout(function () { message.innerHTML = ""; }, 6000);
+        }, 2000);
+      };
+      window.applicationCache.onnoupdate = function () {
+        message.innerHTML = "Cache a jour!";
+        setTimeout(function () { message.innerHTML = ""; }, 3000)
+      };
+      window.applicationCache.onprogress = function (a) {
+        overlay.style.display = "block"; progress.innerHTML = '<div align="center" id="mybar"></div>'; let mybar = document.getElementById("mybar"); nb = Math.round(100 * (a.loaded / a.total)); mybar.style.width = nb + "%";
+        if (nb == 0) { mybar.innerHTML = ""; }
+        else { mybar.innerHTML = nb + "%"; }
+      };
 
+    } else { alertfirmware = true; }
+  </script>
   <script src="assets/js/functions.js"></script>
   <script>function print() { }</script>
   <script src="common/exploit.js"></script>

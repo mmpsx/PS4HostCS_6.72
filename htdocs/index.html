@@ -1,45 +1,99 @@
-<!--<html manifest="offline.manifest">-->
-<html>
+<html manifest="offline.manifest">
 <head>
-<meta charset="utf-8" />
-<title></title>
-<link rel="stylesheet" href="assets/css/default.css">
-<script src="assets/js/functions.js"></script>
+  <title></title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="assets/css/default.min.css">
 </head>
 <body>
-<script>function print() { }</script>
-<script src="common/exploit.js"></script>
-<header id="header">
-<div class="content-title">
-<h1 id="title">Jailbreak Fw 6.72</h1>
-</div>
-</header>
-<div class="overlay" id="cache-overlay">
-<div id="progress">
-<div align="center" id="myBar"></div>
-</div>
-</div>
-<div id="language" class="hidelanguage"></div>
-<div id="choicelangue"><button>Language</button></div>
-<div id="menulist" class="container"></div>
-<div id="message" class="message"></div>
-<div id="alertfw"></div>
-<hr>
-<footer>
-<div id="cs-loader" class="cs-loader">
-<div class="cs-loader-inner">
-<label></label>
-<label></label>
-<label></label>
-<label></label>
-<label></label>
-<label></label>
-</div>
-</div>
-<div id="fanprogress" class="fanprogress"></div>
-<div id="firmware"></div>
-</footer>
-<script src="assets/lang/lang.json"></script>
-<script src="assets/js/style.js"></script>
+  <script src="assets/lang/lang.json"></script>
+  <script>
+    let defaultLangue = 0;
+    let fwVersion = null;
+    let alertfirmware = false;
+    let nb = 0;
+    let tabJSON = [];
+    let datas = [data, home, scrolling_menu];
+    for (let i = 0; i < datas.length; i++) {
+      tabJSON[i] = JSON.parse(datas[i]);
+    }
+    function checkFw() {
+      let ua = navigator.userAgent;
+        fwVersion = ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple"));
+        return fwVersion;
+      //for test interface of PC
+      //return fwVersion = "6.72";
+    }
+    if (checkFw() === "6.72" || checkFw() === "8.00") {
+      window.applicationCache.ondownloading = function () {
+        document.getElementById("message").innerHTML =
+          '<div class="green">' +
+          tabJSON[0][defaultLangue].goodFw +
+          checkFw() +
+          tabJSON[0][defaultLangue].goodFw2 + "</div>";
+      };
+      window.applicationCache.onprogress = function (a) {
+        document.getElementById("cache-overlay").style.display = "block";
+        document.getElementById("progress").innerHTML = '<div align="center" id="mybar"></div>';
+        let mybar = document.getElementById("mybar");
+        nb = Math.round(100 * (a.loaded / a.total));
+        mybar.style.width = nb + "%";
+        if (nb == 0) {
+          mybar.innerHTML = "";
+        } else {
+          mybar.innerHTML = nb + "%";
+        }
+      };
+      window.applicationCache.oncached = function () {
+        document.getElementById("cache-overlay").style.display = "none";
+        document.getElementById("message").innerHTML =
+          '<div align="center" style="color:green">' +
+          tabJSON[0][defaultLangue].cachedsucces +
+          "</div>";
+        setTimeout(function () {
+          document.getElementById("message").innerHTML = '<div align="center" style="color:white">' +
+            tabJSON[0][defaultLangue].quitNav +
+            "</div>";
+          setTimeout(function () {
+            document.getElementById("message").innerHTML = "";
+          }, 6000);
+        }, 2000);
+      };
+    } else {
+      alertfirmware = true;
+    }
+  </script>
+
+  <script src="assets/js/functions.js"></script>
+  <script>function print() { }</script>
+  <script src="common/exploit.js"></script>
+  <header id="header">
+    <div class="content-title">
+      <h1 id="title">Jailbreak Fw 6.72</h1>
+    </div>
+  </header>
+  <div class="overlay" id="cache-overlay">
+    <div id="progress"></div>
+  </div>
+  <div id="message" class="message"></div>
+  <div id="language" class="hidelanguage"></div>
+  <div id="choicelangue"><button>Language</button></div>
+  <div id="menulist" class="container"></div>
+  <hr>
+  <footer>
+    <div id="cs-loader" class="cs-loader">
+      <div class="cs-loader-inner">
+        <label></label>
+        <label></label>
+        <label></label>
+        <label></label>
+        <label></label>
+        <label></label>
+      </div>
+    </div>
+    <div id="fanprogress" class="fanprogress"></div>
+    <div id="firmware"></div>
+  </footer>
+  <script src="assets/js/style.js"></script>
 </body>
+
 </html>

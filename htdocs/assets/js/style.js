@@ -1,76 +1,21 @@
 /***********************Définition des variables**********************/
-//deleteCookie("language");
-let defaultLangue = 0;
 let level = 0;
 let spoof = false;
-let tabJSON = [];
-let datas = [data, home, scrolling_menu];
 let title = document.getElementsByTagName("title");
-let version = "2.0.6";
+let version = "2.0.7";
 let exploit = null;
 /*********************Définition des contantes**********************/
-const overlay = document.getElementById("cache-overlay");
 const menuList = document.getElementById("menulist");
 const fanProgress = document.getElementById("fanprogress");
-const alertFw = document.getElementById("alertfw");
 const csLoader = document.getElementById("cs-loader");
-const message = document.getElementById("message");
 const firmware = document.getElementById("firmware");
 const fanprogress = document.getElementById("fanprogress");
 const displayLangue = document.getElementById("language");
 const menu = document.getElementById("menulist");
 const choiceLang = document.getElementById("choicelangue");
-/**************Affichage du menu ***************************/
-for (let i = 0; i < datas.length; i++) {
-  tabJSON[i] = JSON.parse(datas[i]);
-}
-if (checkFw() === "6.72" || checkFw() === "8.00") {
-  let i = 0;
-  window.applicationCache.ondownloading = function () {
-    document.getElementById("alertfw").innerHTML =
-      '<div class="green">' +
-      tabJSON[0][defaultLangue].goodFw +
-      fwVersion +
-      tabJSON[0][defaultLangue].goodFw2 +
-      "</div>";
-  };
-  window.applicationCache.onprogress = function (a) {
-    document.getElementById("cache-overlay").style.display = "block";
-    document.getElementById("progress").innerHTML =
-      '<div align="center" id="myBar"></div>';
-    i = Math.round(100 * (a.loaded / a.total));
-    document.getElementById("myBar").style.width = i + "%";
-    if (i == 0) {
-      document.getElementById("myBar").innerHTML = "";
-    } else {
-      document.getElementById("myBar").innerHTML = i + "%";
-    }
-  };
-  window.applicationCache.oncached = function () {
-    document.getElementById("cache-overlay").style.display = "none";
-    document.getElementById("alertfw").innerHTML = "";
-    document.getElementById("message").innerHTML =
-      '<div align="center" style="color:green">' +
-      tabJSON[0][defaultLangue].cachedsucces +
-      "</div>";
-    setTimeout(function () {
-      document.getElementById("message").innerHTML =
-        '<div align="center" style="color:white">' +
-        tabJSON[0][defaultLangue].quitNav +
-        "</div>";
-      setTimeout(function () {
-        document.getElementById("message").innerHTML = "";
-      }, 6000);
-    }, 2000);
-  };
-} else {
-  var alertfirmware = true;
-}
-
-
+const overlay = document.getElementById("cache-overlay");
 displayFan();
 displayFirmware();
-
 /***********************Firmware non compatible***********************/
 if (alertfirmware == true) {
   if (document.getElementById("menulist") != null) {
@@ -78,7 +23,7 @@ if (alertfirmware == true) {
     displayNone(menuList);
     displayNone(fanProgress);
     setInnerHTML(
-      alertFw,
+      message,
       '<div class="red">' +
         tabJSON[0][defaultLangue].badFw +
         checkFw() +
@@ -88,7 +33,7 @@ if (alertfirmware == true) {
     setTimeout(function () {
       displayNone(overlay);
       setInnerHTML(
-        alertFw,
+        message,
         '<div class="red">' +
           tabJSON[0][defaultLangue].desactivateHost +
           "</div>"
@@ -346,7 +291,14 @@ function setCookieLevel() {
 /************************Définition de la langue**********************/
 function loadHTML() {
   if (menu) {
-    title[0].innerHTML ="PS4HostCS" +" V "+version +" "+plLangue() +" "+tabJSON[0][defaultLangue].compagnie;
+    title[0].innerHTML =
+      "PS4HostCS" +
+      " V " +
+      version +
+      " " +
+      plLangue() +
+      " " +
+      tabJSON[0][defaultLangue].compagnie;
     setInnerHTML(menu, buildHTML());
   }
 }
@@ -406,120 +358,120 @@ function displayCheckBox() {
     displayLangue.classList.remove("showlanguage");
     displayLangue.classList.add("hidelanguage");
   });
-};
-function buildHTML(){
+}
+function buildHTML() {
   let buildHTML =
-  '<ul id="menu">' +
-  '<li id="li0"><a href="#" class="deroulant" id="scrolling_menu0">' +
-  tabJSON[2][defaultLangue].exploit +
-  "</a>" +
-  '<ul class="submenu" id="submenu0">' +
-  '<li><a href="#" class="custom-btn btn" onclick="load_JB(); return false">' +
-  tabJSON[1][defaultLangue].jb +
-  "</a></li>" +
-  '<li><a href="#" class="custom-btn btn" onclick="load_mira(\'noofficial\'); return false">' +
-  tabJSON[1][defaultLangue].mira +
-  "</a>" +
-  "</li>" +
-  '<li><a href="#" class="custom-btn btn" onclick="load_mira(\'official\'); return false">' +
-  tabJSON[1][defaultLangue].mira2 +
-  "</a></li>" +
-  '<li><a href="#" class="custom-btn btn" onclick="load_binloader(); return false">' +
-  tabJSON[1][defaultLangue].binload +
-  "</a></li>" +
-  '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Todex\'); return false">' +
-  tabJSON[1][defaultLangue].dex +
-  "</a></li>" +
-  '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Linux\'); return false">' +
-  tabJSON[1][defaultLangue].linux +
-  "</a></li>" +
-  "</ul>" +
-  "</li>" +
-  '<li id="li1"><a href="#" class="deroulant" id="scrolling_menu1">' +
-  tabJSON[2][defaultLangue].system +
-  "</a>" +
-  '<ul class="submenu" id="submenu1">' +
-  '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'DumperKernel\'); return false">' +
-  tabJSON[1][defaultLangue].dumperkernel +
-  "</a></li>" +
-  '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'KernelClock\'); return false">' +
-  tabJSON[1][defaultLangue].kernelclock +
-  "</a></li>" +
-  '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'BackupDTB\'); return false">' +
-  tabJSON[1][defaultLangue].backupDTB +
-  "</a></li>" +
-  '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'RestoreDTB\'); return false">' +
-  tabJSON[1][defaultLangue].restoreDTB +
-  "</a></li>" +
-  "</ul>" +
-  "</li>" +
-  '<li id="li2"><a href="#" class="deroulant" id="scrolling_menu2">' +
-  tabJSON[2][defaultLangue].nav +
-  "</a>" +
-  '<ul class="submenu" id="submenu2">' +
-  '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'History\'); return false">' +
-  tabJSON[1][defaultLangue].history +
-  "</a></li>" +
-  '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Browser\'); return false">' +
-  tabJSON[1][defaultLangue].browser +
-  "</a></li>" +
-  "</ul>" +
-  "</li>" +
-  '<li id="li3"><a href="#" class="deroulant" id="scrolling_menu3">' +
-  tabJSON[2][defaultLangue].app +
-  "</a>" +
-  '<ul class="submenu" id="submenu3">' +
-  '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'HenVTX\'); return false">' +
-  tabJSON[1][defaultLangue].henvtx +
-  "</a></li>" +
-  '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'HenVTX_2.1.5\'); return false">' +
-  tabJSON[1][defaultLangue].hennoofficial +
-  "</a></li>" +
-  '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Dumper\'); return false">' +
-  tabJSON[1][defaultLangue].dumper +
-  "</a></li>" +
-  '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'App2usb\'); return false">' +
-  tabJSON[1][defaultLangue].app2usb +
-  "</a></li>" +
-  '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'rifs\'); return false">' +
-  tabJSON[1][defaultLangue].rifs +
-  "</a></li>" +
-  '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'WebRTE\'); return false">' +
-  tabJSON[1][defaultLangue].webrte +
-  "</a></li>" +
-  "</ul>" +
-  "</li>" +
-  '<li id="li4"><a href="#" class="deroulant" id="scrolling_menu4">' +
-  tabJSON[2][defaultLangue].ftp +
-  "</a>" +
-  '<ul class="submenu" id="submenu4">' +
-  '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Ftp\'); return false">' +
-  tabJSON[1][defaultLangue].ftp +
-  "</a></li>" +
-  "</ul>" +
-  "</li>" +
-  '<li id="li5"><a href="#" class="deroulant" id="scrolling_menu5">' +
-  tabJSON[2][defaultLangue].update +
-  "</a>" +
-  '<ul class="submenu" id="submenu5">' +
-  '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Desabler\'); return false">' +
-  tabJSON[1][defaultLangue].desabler +
-  "</a></li>" +
-  '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Enabler\'); return false">' +
-  tabJSON[1][defaultLangue].enabler +
-  "</a></li>" +
-  "</ul>" +
-  "</li>" +
-  '<li id="li5"><a href="#" class="deroulant" id="scrolling_menu6">' +
-  tabJSON[2][defaultLangue].ps4trainer +
-  "</a>" +
-  '<ul class="submenu" id="submenu5">' +
-  '<li><a class="custom-btn btn" href="http://ps4trainer.com/Trainer/index.html">' +
-  tabJSON[1][defaultLangue].ps4trainer +
-  "</a></li>" +
-  "</ul>" +
-  "</li>" +
-  "</ul>";
+    '<ul id="menu">' +
+    '<li id="li0"><a href="#" class="deroulant" id="scrolling_menu0">' +
+    tabJSON[2][defaultLangue].exploit +
+    "</a>" +
+    '<ul class="submenu" id="submenu0">' +
+    '<li><a href="#" class="custom-btn btn" onclick="load_JB(); return false">' +
+    tabJSON[1][defaultLangue].jb +
+    "</a></li>" +
+    '<li><a href="#" class="custom-btn btn" onclick="load_mira(\'noofficial\'); return false">' +
+    tabJSON[1][defaultLangue].mira +
+    "</a>" +
+    "</li>" +
+    '<li><a href="#" class="custom-btn btn" onclick="load_mira(\'official\'); return false">' +
+    tabJSON[1][defaultLangue].mira2 +
+    "</a></li>" +
+    '<li><a href="#" class="custom-btn btn" onclick="load_binloader(); return false">' +
+    tabJSON[1][defaultLangue].binload +
+    "</a></li>" +
+    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Todex\'); return false">' +
+    tabJSON[1][defaultLangue].dex +
+    "</a></li>" +
+    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Linux\'); return false">' +
+    tabJSON[1][defaultLangue].linux +
+    "</a></li>" +
+    "</ul>" +
+    "</li>" +
+    '<li id="li1"><a href="#" class="deroulant" id="scrolling_menu1">' +
+    tabJSON[2][defaultLangue].system +
+    "</a>" +
+    '<ul class="submenu" id="submenu1">' +
+    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'DumperKernel\'); return false">' +
+    tabJSON[1][defaultLangue].dumperkernel +
+    "</a></li>" +
+    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'KernelClock\'); return false">' +
+    tabJSON[1][defaultLangue].kernelclock +
+    "</a></li>" +
+    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'BackupDTB\'); return false">' +
+    tabJSON[1][defaultLangue].backupDTB +
+    "</a></li>" +
+    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'RestoreDTB\'); return false">' +
+    tabJSON[1][defaultLangue].restoreDTB +
+    "</a></li>" +
+    "</ul>" +
+    "</li>" +
+    '<li id="li2"><a href="#" class="deroulant" id="scrolling_menu2">' +
+    tabJSON[2][defaultLangue].nav +
+    "</a>" +
+    '<ul class="submenu" id="submenu2">' +
+    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'History\'); return false">' +
+    tabJSON[1][defaultLangue].history +
+    "</a></li>" +
+    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Browser\'); return false">' +
+    tabJSON[1][defaultLangue].browser +
+    "</a></li>" +
+    "</ul>" +
+    "</li>" +
+    '<li id="li3"><a href="#" class="deroulant" id="scrolling_menu3">' +
+    tabJSON[2][defaultLangue].app +
+    "</a>" +
+    '<ul class="submenu" id="submenu3">' +
+    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'HenVTX\'); return false">' +
+    tabJSON[1][defaultLangue].henvtx +
+    "</a></li>" +
+    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'HenVTX_2.1.5\'); return false">' +
+    tabJSON[1][defaultLangue].hennoofficial +
+    "</a></li>" +
+    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Dumper\'); return false">' +
+    tabJSON[1][defaultLangue].dumper +
+    "</a></li>" +
+    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'App2usb\'); return false">' +
+    tabJSON[1][defaultLangue].app2usb +
+    "</a></li>" +
+    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'rifs\'); return false">' +
+    tabJSON[1][defaultLangue].rifs +
+    "</a></li>" +
+    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'WebRTE\'); return false">' +
+    tabJSON[1][defaultLangue].webrte +
+    "</a></li>" +
+    "</ul>" +
+    "</li>" +
+    '<li id="li4"><a href="#" class="deroulant" id="scrolling_menu4">' +
+    tabJSON[2][defaultLangue].ftp +
+    "</a>" +
+    '<ul class="submenu" id="submenu4">' +
+    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Ftp\'); return false">' +
+    tabJSON[1][defaultLangue].ftp +
+    "</a></li>" +
+    "</ul>" +
+    "</li>" +
+    '<li id="li5"><a href="#" class="deroulant" id="scrolling_menu5">' +
+    tabJSON[2][defaultLangue].update +
+    "</a>" +
+    '<ul class="submenu" id="submenu5">' +
+    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Desabler\'); return false">' +
+    tabJSON[1][defaultLangue].enabler +
+    "</a></li>" +
+    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Enabler\'); return false">' +
+    tabJSON[1][defaultLangue].desabler+
+    "</a></li>" +
+    "</ul>" +
+    "</li>" +
+    '<li id="li5"><a href="#" class="deroulant" id="scrolling_menu6">' +
+    tabJSON[2][defaultLangue].ps4trainer +
+    "</a>" +
+    '<ul class="submenu" id="submenu5">' +
+    '<li><a class="custom-btn btn" href="http://ps4trainer.com/Trainer/index.html">' +
+    tabJSON[1][defaultLangue].ps4trainer +
+    "</a></li>" +
+    "</ul>" +
+    "</li>" +
+    "</ul>";
   return buildHTML;
 }
 loadHTML();

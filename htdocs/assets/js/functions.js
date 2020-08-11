@@ -95,9 +95,7 @@ function setInnerText(elem, str) {
 function languncheck(elem) {
   if (elem) elem.checked = false;
 }
-function ifelemexist(elem, name) {
-  if (elem) name = elem;
-}
+
 function addDays(days) {
   let result = new Date();
   result.setDate(result.getDate() + days);
@@ -117,6 +115,7 @@ function loadPayload(payload) {
     document.getElementsByTagName("head")[0].appendChild(element);
   }
 }
+
 function barFan(barfan, level) {
   for (let i = 0; i < level; i++)
     barfan += '<button id="' + i + 'btn" class="level"></button>';
@@ -135,12 +134,5 @@ function injection() {
 function reception() {
   setInnerText(message, tabJSON[0][defaultLangue].injectwell);
 }
-let fwVersion = null;
-    function checkFw() {
-      let ua = navigator.userAgent;
-      fwVersion = ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple"));
-      return fwVersion;
-      //for test interface of PC 
-     // return fwVersion = "6.72";
-    }
+
 createTempDefault("65");

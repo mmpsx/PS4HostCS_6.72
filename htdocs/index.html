@@ -1,5 +1,4 @@
 <html manifest="offline.manifest">
-<html>
 
 <head>
   <title></title>
@@ -10,7 +9,7 @@
 <body>
   <script src="assets/lang/lang.json"></script>
   <script>
-    let defaultLangue = 0;//for caching ENGLISH select 1 FRENCH select 0
+    let defaultLangue = 1;//for caching ENGLISH select 1 FRENCH select 0
     let fwVersion = null;
     let alertfirmware = false;
     let nb = 0;
@@ -22,7 +21,7 @@
       let ua = navigator.userAgent;
       fwVersion = ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple"));
       return fwVersion;
-      //for test interface of PC
+      //for test interface of PC*/
       //return fwVersion = "6.72";
     }
     if (checkFw() === "6.72" || checkFw() === "8.00") {
@@ -46,10 +45,6 @@
           message.innerHTML = '<div align="center" style="color:white">' + tabJSON[0][defaultLangue].quitNav + "</div>";
           setTimeout(function () { message.innerHTML = ""; }, 6000);
         }, 2000);
-      };
-      window.applicationCache.onnoupdate = function () {
-        message.innerHTML = "Cache a jour!";
-        setTimeout(function () { message.innerHTML = ""; }, 3000)
       };
       window.applicationCache.onprogress = function (a) {
         overlay.style.display = "block"; progress.innerHTML = '<div align="center" id="mybar"></div>'; let mybar = document.getElementById("mybar"); nb = Math.round(100 * (a.loaded / a.total)); mybar.style.width = nb + "%";

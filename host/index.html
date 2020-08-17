@@ -1,0 +1,108 @@
+<html manifest="offline.manifest">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="assets/css/default.min.css">
+</head>
+<body>
+    <script>
+        let defaultLangue = 0; //for caching ENGLISH select 1 FRENCH select 0
+        let fwVersion = null;
+        let alertfirmware = false;
+        let nb = 0;
+        let cach = [];
+        function infoCache() {cac = [ca];for (let i = 0; i < cac.length; i++) {cach[i] = JSON.parse(cac[i]);}}
+        function checkFw() {
+            let ua = navigator.userAgent;
+            fwVersion = ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple"));
+            return fwVersion;
+            //for test interface of PC*/
+            //return fwVersion = "6.72";
+        }
+        if (checkFw() === "6.72" || checkFw() === "8.00") {
+            window.applicationCache.ondownloading = function () {
+                const message = document.getElementById("message");
+                const overlay = document.getElementById("cache-overlay");
+                const progress = document.getElementById("progress");
+                message.innerHTML = '<div class="green">' + cach[0][defaultLangue].goodfw + checkFw() + cach[0][defaultLangue].goodfw2 + "</div>";
+            };
+            window.applicationCache.onnoupdate = function () { load_JB() };
+            window.applicationCache.onerror = function () { load_JB() };
+            window.applicationCache.oncached = function () {
+                overlay.style.display = "none"; message.innerHTML = '<div align="center" style="color:green">' + cach[0][defaultLangue].cachedsucces + "</div>";
+                setTimeout(function () {
+                    message.innerHTML = '<div align="center" style="color:white">' + cach[0][defaultLangue].quitnav + "</div>";
+                    setTimeout(function () {
+                        load_JB();
+                        setTimeout(function () {
+                            if (main_ret == 179 || main_ret == 0) inject_payload("Fancontrol");
+                        }, 6000);
+                    }, 4000)
+                }, 4000);
+            };
+            window.applicationCache.onupdateready = function () {
+                window.applicationCache.swapCache();
+                overlay.style.display = "none"; message.innerHTML = '<div align="center" style="color:green">' + cach[0][defaultLangue].cachedsucces + "</div>";
+                setTimeout(function () {
+                    message.innerHTML = '<div align="center" style="color:white">' + cach[0][defaultLangue].quitnav + "</div>";
+                    setTimeout(function () {
+                        load_JB();
+                        setTimeout(function () {
+                            if (main_ret == 179 || main_ret == 0) inject_payload("Fancontrol");
+                        }, 3000);
+                    }, 6000)
+                }, 4000);
+            };
+            window.applicationCache.onprogress = function (a) {
+                overlay.style.display = "block"; progress.innerHTML = '<div align="center" id="mybar"></div>'; let mybar = document.getElementById("mybar"); nb = Math.round(100 * (a.loaded / a.total)); mybar.style.width = nb + "%";
+                if (nb == 0) { mybar.innerHTML = ""; }
+                else { mybar.innerHTML = nb + "%"; }
+            };
+        } else { alertfirmware = true; }
+    </script>
+    <script src="assets/js/functions.js"></script>
+    <script>function print() { }</script>
+    <script src="common/exploit.js"></script>
+    <header id="header">
+        <div class="content-title">
+            <h1 id="title">Jailbreak Fw 6.72</h1>
+        </div>
+    </header>
+    <div class="overlay" id="cache-overlay">
+        <div id="progress"></div>
+    </div>
+    <div id="language" class="hidelanguage"></div>
+    <div id="choicelangue"><button>Language</button></div>
+    <div id="menulist" class="container"></div>
+    <div id="message" class="message"></div>
+    <div id="cs-loader" class="cs-loader">
+        <div class="cs-loader-inner">
+            <label></label>
+            <label></label>
+            <label></label>
+            <label></label>
+            <label></label>
+            <label></label>
+        </div>
+    </div>
+    <hr>
+    <footer>
+        <div class="box">
+            <div id="fanprogress" class="fanprogress"></div>
+            <div id="boxip" class="boxip"></div>
+            <div id="firmware"></div>
+        </div>
+    </footer>
+    <script src="assets/lang/ca.json"></script>
+    <script>
+        infoCache();
+    </script>
+    <script src="assets/lang/server.json"></script>
+    <script src="assets/lang/scrolling.json"></script>
+    <script src="assets/lang/payload.json"></script>
+    <script src="assets/lang/home.json"></script>
+
+    <script src="assets/js/style.js"></script>
+</body>
+
+</html>

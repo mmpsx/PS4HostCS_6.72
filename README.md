@@ -47,6 +47,11 @@ PS4 Jailbreak Host 25/07/2020
 - Payload FTP and Dumper update
 - New temperature threshold
 
+### 17/08/2020 PS4HostCS V2.0.8
+- Add server node
+- Add Ip connexion PS4 and Host
+- Selector Language display instruction server by PS4HostCS
+
 [![Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 ### local use

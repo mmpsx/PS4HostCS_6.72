@@ -58,7 +58,7 @@ PS4 Jailbreak Host 25/07/2020
 
 - extract the archive or cloned from the repository
 - Set your PS4 DNS to the local IP of your PC
-- Start miniweb.exe from your PC
+- Start PS4HostCS_v1.0.0.exe from your PC
 - Open your PS4 browser to http: / your local PC IP: 8000
 - Enjoy
 

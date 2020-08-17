@@ -63,10 +63,12 @@ PS4 Jailbreak Host 25/07/2020
 - Enjoy
 
 ### Or Online
-
-http://dev-web68.fr With Caching
-http://dev-web68.fr/OnlineHost Not caching Online only
-
+Fench:
+https://dev-web68.fr With Caching
+https://dev-web68.fr/OnlineHost Not caching Online only
+English:
+https://dev-web68.fr/EN With Caching
+https://dev-web68.fr/EN/OnlineHost Not caching Online only
 ### Recommandations
 
 - Avoid the page refresh for the moment it will cause you a message "Insufficient system memory"

@@ -1,10 +1,12 @@
 <html manifest="offline.manifest">
-    <html>
+<html>
+
 <head>
     <title></title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="assets/css/default.min.css">
 </head>
+
 <body>
     <script>
         let defaultLangue = 0; //for caching ENGLISH select 1 FRENCH select 0
@@ -12,13 +14,13 @@
         let alertfirmware = false;
         let nb = 0;
         let cach = [];
-        function infoCache() {cac = [ca];for (let i = 0; i < cac.length; i++) {cach[i] = JSON.parse(cac[i]);}}
+        function infoCache() { cac = [ca]; for (let i = 0; i < cac.length; i++) { cach[i] = JSON.parse(cac[i]); } }
         function checkFw() {
             let ua = navigator.userAgent;
             fwVersion = ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple"));
             return fwVersion;
             //for test interface of PC*/
-           // return fwVersion = "6.72";
+            // return fwVersion = "6.72";
         }
         if (checkFw() === "6.72" || checkFw() === "8.00") {
             window.applicationCache.ondownloading = function () {
@@ -30,29 +32,23 @@
             window.applicationCache.onnoupdate = function () { load_JB() };
             window.applicationCache.onerror = function () { load_JB() };
             window.applicationCache.oncached = function () {
-                overlay.style.display = "none"; message.innerHTML = '<div align="center" style="color:green">' + cach[0][defaultLangue].cachedsucces + "</div>";
+                overlay.style.display = "none";
+                message.innerHTML = '<div align="center" style="color:green">' + cach[0][defaultLangue].cachedsucces + "</div>";
                 setTimeout(function () {
-                    message.innerHTML = '<div align="center" style="color:white">' + cach[0][defaultLangue].quitnav + "</div>";
-                    setTimeout(function () {
-                        load_JB();
-                        setTimeout(function () {
-                            if (main_ret == 179 || main_ret == 0) inject_payload("Fancontrol");
-                        }, 6000);
-                    }, 4000)
-                }, 4000);
+                    message.innerHTML = "";
+                    load_JB();
+                    if (main_ret == 179 || main_ret == 0) inject_payload("Fancontrol");
+                }, 1000);
             };
             window.applicationCache.onupdateready = function () {
                 window.applicationCache.swapCache();
                 overlay.style.display = "none"; message.innerHTML = '<div align="center" style="color:green">' + cach[0][defaultLangue].cachedsucces + "</div>";
                 setTimeout(function () {
-                    message.innerHTML = '<div align="center" style="color:white">' + cach[0][defaultLangue].quitnav + "</div>";
+                    load_JB();
                     setTimeout(function () {
-                        load_JB();
-                        setTimeout(function () {
-                            if (main_ret == 179 || main_ret == 0) inject_payload("Fancontrol");
-                        }, 3000);
-                    }, 6000)
-                }, 4000);
+                        if (main_ret == 179 || main_ret == 0) inject_payload("Fancontrol");
+                    }, 3000);
+                }, 6000)
             };
             window.applicationCache.onprogress = function (a) {
                 overlay.style.display = "block"; progress.innerHTML = '<div align="center" id="mybar"></div>'; let mybar = document.getElementById("mybar"); nb = Math.round(100 * (a.loaded / a.total)); mybar.style.width = nb + "%";
@@ -96,7 +92,7 @@
             <label class="switch">
                 <input type="checkbox" onclick="displayBubble()">
                 <span class="slider round"></span></span>
-              </label>
+            </label>
             <div id="firmware"></div>
         </div>
     </footer>

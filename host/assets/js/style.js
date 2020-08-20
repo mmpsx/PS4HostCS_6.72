@@ -211,10 +211,13 @@ function finished() {
     case "Jailbreak":
       if (main_ret == 179 || main_ret == 0) {
         displayNone(csLoader);
-        setInnerText(message, home[0][defaultLangue].jbsuccess);
+        setInnerText(message, "");
+        boxip.innerHTML +=
+          '<div class="lan">Jailbreak <span class="green">OK</span></div>'
+        /*setInnerText(message, home[0][defaultLangue].jbsuccess);
         setTimeout(function () {
           setInnerText(message, "");
-        }, 3000);
+        }, 3000);*/
       } else setInnerText(message, home[0][defaultLangue].jbfailed);
       removeScript(0);
       break;
@@ -239,8 +242,8 @@ function displayFirmware() {
 }
 /***********************Jailbreak***************************/
 function load_JB() {
-  setInnerText(message, home[0][defaultLangue].wait_jb);
-  displayBlock(csLoader);
+  //setInnerText(message, home[0][defaultLangue].wait_jb);
+  //displayBlock(csLoader);
   exploit = "Jailbreak";
   setTimeout(function () {
     let func = JB("jb");
@@ -636,12 +639,12 @@ function move(e) {
   if (cmpti) {
     if (document.documentElement.clientWidth > 0) {
       GetId("curseur").style.left =
-        50 + event.x + document.documentElement.scrollLeft + "px";
+        80 + event.x + document.documentElement.scrollLeft + "px";
       GetId("curseur").style.top =
         topBubble + event.y + document.documentElement.scrollTop + "px";
     } else {
       GetId("curseur").style.left =
-        50 + event.x + document.body.scrollLeft + "px";
+        80 + event.x + document.body.scrollLeft + "px";
       GetId("curseur").style.top =
         topBubble + event.y + document.body.scrollTop + "px";
     }

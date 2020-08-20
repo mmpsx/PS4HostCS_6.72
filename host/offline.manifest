@@ -21,7 +21,7 @@ PL_EN\Enabler.js
 PL_EN\Fancontrol.js
 PL_EN\Ftp.js
 PL_EN\HenVTX.js
-PL_EN\HenVTX_2.1.5.js
+PL_EN\HenVTX_2.1.9.js
 PL_EN\History.js
 PL_EN\KernelClock.js
 PL_EN\Linux.js
@@ -43,7 +43,7 @@ PL_FR\Enabler.js
 PL_FR\Fancontrol.js
 PL_FR\Ftp.js
 PL_FR\HenVTX.js
-PL_FR\HenVTX_2.1.5.js
+PL_FR\HenVTX_2.1.9.js
 PL_FR\History.js
 PL_FR\KernelClock.js
 PL_FR\Linux.js

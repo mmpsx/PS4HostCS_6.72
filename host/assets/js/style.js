@@ -17,7 +17,7 @@ for (let i = 0; i < scrolling.length; i++) {
 let payloads = [];
 pl = [
   pls,
-  jb,
+  //jb,
   miranooff,
   miraoff,
   binloader,
@@ -136,8 +136,7 @@ function requestIp() {
         } else {
           boxip.innerHTML += '<div class="lan">PS4 : N/A</div>';
         }
-        boxip.innerHTML +=
-          '<div class="lan">PS4HostCS : N/A</span></div>';
+        boxip.innerHTML += '<div class="lan">PS4HostCS : N/A</span></div>';
         boxip.innerHTML +=
           '<div class="lan">Cache : <span class="green">' +
           home[0][defaultLangue].cached +
@@ -570,7 +569,7 @@ function buildHTML() {
     '<li><a id="hen" href="#" class="custom-btn btn" onclick="inject_payload(\'HenVTX\'); return false">' +
     payloads[0][defaultLangue].henvtx +
     "</a></li>" +
-    '<li><a id="hennooff" href="#" class="custom-btn btn" onclick="inject_payload(\'HenVTX_2.1.5\'); return false">' +
+    '<li><a id="hennooff" href="#" class="custom-btn btn" onclick="inject_payload(\'HenVTX_2.1.9\'); return false">' +
     payloads[0][defaultLangue].hennoofficial +
     "</a></li>" +
     '<li><a id="dumper" href="#" class="custom-btn btn" onclick="inject_payload(\'Dumper\'); return false">' +
@@ -626,33 +625,39 @@ displayCheckBox();
 function GetId(id) {
   return document.getElementById(id);
 }
-var i = false;
+let cmpti = false;
+let topBubble = 0;
+let a = 1;
+b = 1;
+c = 1;
+d = 1;
+e = 1;
 function move(e) {
-  if (i) {
+  if (cmpti) {
     if (document.documentElement.clientWidth > 0) {
       GetId("curseur").style.left =
         50 + event.x + document.documentElement.scrollLeft + "px";
       GetId("curseur").style.top =
-        -10 + event.y + document.documentElement.scrollTop + "px";
+        topBubble + event.y + document.documentElement.scrollTop + "px";
     } else {
       GetId("curseur").style.left =
         50 + event.x + document.body.scrollLeft + "px";
       GetId("curseur").style.top =
-        -10 + event.y + document.body.scrollTop + "px";
+        topBubble + event.y + document.body.scrollTop + "px";
     }
   }
 }
 function showBubble(text) {
-  if (i == false) {
+  if (cmpti == false) {
     GetId("curseur").style.visibility = "visible";
     GetId("curseur").innerHTML = text;
-    i = true;
+    cmpti = true;
   }
 }
 function hideBubble() {
-  if (i == true) {
+  if (cmpti == true) {
     GetId("curseur").style.visibility = "hidden";
-    i = false;
+    cmpti = false;
   }
 }
 document.onmousemove = move;
@@ -660,25 +665,65 @@ document.onmousemove = move;
 /************************States Infos Bubble*********************************/
 if (getCookie("bubble") === null) {
   createCookie("bubble", "bubble");
-  setInnerHTML(infobubble, '<span class="green">' + home[0][defaultLangue][getCookie("bubble")] + '</span');
+  setInnerHTML(
+    infobubble,
+    '<span class="green">' +
+      home[0][defaultLangue][getCookie("bubble")] +
+      "</span"
+  );
   infosBubble();
 } else {
-  if(getCookie("bubble") === "bubble"){
-    setInnerHTML(infobubble, '<span class="green">' + home[0][defaultLangue][getCookie("bubble")] + '</span');
+  if (getCookie("bubble") === "bubble") {
+    setInnerHTML(
+      infobubble,
+      '<span class="green">' +
+        home[0][defaultLangue][getCookie("bubble")] +
+        "</span"
+    );
   } else {
-    setInnerHTML(infobubble, '<span class="red">' + home[0][defaultLangue][getCookie("bubble")] + '</span');
-  }  
+    setInnerHTML(
+      infobubble,
+      '<span class="red">' +
+        home[0][defaultLangue][getCookie("bubble")] +
+        "</span"
+    );
+  }
   infosBubble();
 }
-
+/*****************Position Top Bubble selector********************/
+function position_top(j){
+  if (j >= 6 && j <= 9) {
+    topBubble = -(a * 10);
+    a++;
+  } else if (j >= 10 && j <= 11) {
+    topBubble = -(b * 10);
+    b++;
+  } else if (j >= 12 && j <= 17) {
+    topBubble = -(c * 10);
+    c++;
+  } else if (j >= 18) {
+    topBubble = -(d * 10);
+    d++;
+  } else if (j >= 19 && j <= 20) {
+    topBubble = -(e * 10);
+    e++;
+  } else if (j >= 20) {
+    topBubble = -(f * 10);
+    f++;
+  } else {
+    topBubble = -(j * 10);
+  }
+}
 function infosBubble() {
   if (getCookie("bubble") === "bubble") {
     let tabMenu = document.getElementById("menu");
     let tabBtn = tabMenu.getElementsByClassName("custom-btn btn");
     for (let i = 0, iMax = tabBtn.length; i < iMax; ++i) {
       let id = tabBtn[i].id;
+
       document.getElementById(id).addEventListener("mouseover", function () {
         let j = i + 1;
+        position_top(j)
         showBubble(
           '<div class="">' +
             "<span>" +

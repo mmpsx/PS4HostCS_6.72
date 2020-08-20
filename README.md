@@ -54,7 +54,7 @@ PS4 Jailbreak Host 25/07/2020
 
 ### 17/08/2020 PS4HostCS V2.0.9
 - Add function Info Bubble display or not (Langue FR or EN);
-- Add PS4 HEN 2.1.9 by Muguiwara
+- Add PS4 HEN 2.1.9 Update by Muguiwara
 
 [![Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 

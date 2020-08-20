@@ -2,41 +2,75 @@
 let level = 0;
 let spoof = false;
 let title = document.getElementsByTagName("title");
-let version = "2.0.8";
+let version = "2.0.9";
 let exploit = null;
+let boxip = document.getElementById("boxip");
+let infobubble = document.getElementById("infobubble");
+
+let scrollings = [];
+scrolling = [scrolls];
+
+for (let i = 0; i < scrolling.length; i++) {
+  scrollings[i] = JSON.parse(scrolling[i]);
+}
+
+let payloads = [];
+pl = [
+  pls,
+  jb,
+  miranooff,
+  miraoff,
+  binloader,
+  todex,
+  linux,
+  dumpkernel,
+  kernelclock,
+  backupdtb,
+  restoredtb,
+  historY,
+  browser,
+  hen,
+  hennooff,
+  dumper,
+  app2usb,
+  rifs,
+  webrte,
+  ftp,
+  desabler,
+  enabler,
+  ps4trainer,
+];
+
+for (let i = 0; i < pl.length; i++) {
+  payloads[i] = JSON.parse(pl[i]);
+}
+
+let home = [];
+datas = [data];
+for (let i = 0; i < datas.length; i++) {
+  home[i] = JSON.parse(datas[i]);
+}
 /*********************Définition des contantes**********************/
 const menuList = document.getElementById("menulist");
 const fanProgress = document.getElementById("fanprogress");
 const csLoader = document.getElementById("cs-loader");
 const firmware = document.getElementById("firmware");
+
 const fanprogress = document.getElementById("fanprogress");
 const displayLangue = document.getElementById("language");
 const menu = document.getElementById("menulist");
 const choiceLang = document.getElementById("choicelangue");
 const overlay = document.getElementById("cache-overlay");
 
-let scrollings = [];
-scrolling = [scrolls];
-for (let i = 0; i < scrolling.length; i++) { 
-  scrollings[i] = JSON.parse(scrolling[i]); 
-}
-
-let payloads = [];
-pl = [pls];
-for (let i = 0; i < pl.length; i++) { 
-  payloads[i] = JSON.parse(pl[i]); 
-}
-
-let home = [];
-datas = [data];
-for (let i = 0; i < datas.length; i++) { 
-  home[i] = JSON.parse(datas[i]); 
-}
-
-
 displayFan();
 displayFirmware();
 
+function injection() {
+  setInnerText(message, home[0][defaultLangue].inject);
+}
+function reception() {
+  setInnerText(message, home[0][defaultLangue].injectwell);
+}
 /***************Display BarFan************************************/
 function barFan(barfan, level) {
   for (let i = 0; i < level; i++)
@@ -50,59 +84,64 @@ function barFan(barfan, level) {
     "°" +
     "</div>");
 }
-function injection() {
-  setInnerText(message, home[0][defaultLangue].inject);
-}
-function reception() {
-  setInnerText(message, home[0][defaultLangue].injectwell);
-}
+
 /**********************Request*************************************/
 function requestLangueServer() {
-//const serverLangue = JSON.parse(server);
-const url = 'http://' + location.host;
+  //const serverLangue = JSON.parse(server);
+  const url = "http://" + location.host;
   fetch(url, {
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
-      method: 'post',
-      body: JSON.stringify({"langue" : defaultLangue})
-  }).then(function(response) {
-      console.log(response);
-  
-  }).catch(function(error) {
-      console.log(error);
+    method: "post",
+    body: JSON.stringify({ langue: defaultLangue }),
   })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 function requestIp() {
   const xhr = new XMLHttpRequest();
   xhr.open("GET", "http://" + location.host + "/ip", true);
   xhr.onreadystatechange = function (e) {
     if (xhr.readyState === 4) {
-      let boxid = document.getElementById("boxip");
       if (xhr.status === 200) {
         let address = JSON.parse(xhr.response);
+        console.log(xhr.response);
         address.forEach((key) => {
           let object = key;
           for (const property in object) {
-
-            if(property == "PS4"){
+            if (property == "PS4") {
               localStorage.setItem(property, object[property]);
+
+              boxip.innerHTML += `<div id="ipps4" class="lan">${property} : ${object[property]}</div>`;
+            } else {
+              boxip.innerHTML += `<div class="lan">${property} : ${object[property]}</div>`;
             }
-            boxid.innerHTML += `<div class="lan">${property} : ${object[property]}</div>`;
           }
         });
+        boxip.innerHTML +=
+          '<div class="lan">Cache : <span class="red">' +
+          home[0][defaultLangue].nocached +
+          "</span></div>";
       } else {
-        if(localStorage.getItem("PS4")){
-          boxid.innerHTML += `<div class="lan">PS4 : ${localStorage.getItem("PS4")}</div>`;
+        if (localStorage.getItem("PS4")) {
+          boxip.innerHTML += `<div id="ipps4" class="lan">PS4 : ${localStorage.getItem(
+            "PS4"
+          )}</div>`;
         } else {
-          boxid.innerHTML +=
-          '<div class="lan">PS4 : N/A</div>';
+          boxip.innerHTML += '<div class="lan">PS4 : N/A</div>';
         }
-         boxid.innerHTML +=
-          '<div class="lan">PS4HostCS : <span style="color:red">N/A</span></div>';
-          boxid.innerHTML +=
-          '<div class="lan">Cache : <span style="color:green">' + home[0][defaultLangue].cached + '</span></div>';
+        boxip.innerHTML +=
+          '<div class="lan">PS4HostCS : N/A</span></div>';
+        boxip.innerHTML +=
+          '<div class="lan">Cache : <span class="green">' +
+          home[0][defaultLangue].cached +
+          "</span></div>";
       }
     }
   };
@@ -127,9 +166,7 @@ if (alertfirmware == true) {
       displayNone(overlay);
       setInnerHTML(
         message,
-        '<div class="red">' +
-          home[0][defaultLangue].desactivateHost +
-          "</div>"
+        '<div class="red">' + home[0][defaultLangue].desactivateHost + "</div>"
       );
     }, 6000);
   }
@@ -145,10 +182,7 @@ function pl_loaded() {
       if (exploit === "Binloader")
         setInnerText(message, home[0][defaultLangue].relaunchBinloader);
       else
-        setInnerText(
-          message,
-          exploit + " " + home[0][defaultLangue].ready_pl
-        );
+        setInnerText(message, exploit + " " + home[0][defaultLangue].ready_pl);
       if (spoof === true)
         setInnerText(message, home[0][defaultLangue].restartNavigator);
       setTimeout(function () {
@@ -183,7 +217,7 @@ function finished() {
           setInnerText(message, "");
         }, 3000);
       } else setInnerText(message, home[0][defaultLangue].jbfailed);
-      removeScript(1);
+      removeScript(0);
       break;
     default:
       pl_loaded();
@@ -253,11 +287,26 @@ function load_mira(version) {
     }, 1000);
   }, 1000);
 }
+
 /***********************Payload***************************/
 function inject_payload(payload) {
   injection();
   displayBlock(csLoader);
   exploit = payload;
+
+  if (payload == "Ftp") {
+    sessionStorage.setItem("Ftp", true);
+    if (sessionStorage.getItem("Ftp") === "true") {
+      document.getElementById("ipps4").innerHTML =
+        '<div class="lan">FTP :' +
+        localStorage.getItem("PS4") +
+        ':1337 <span class="green">Actif</span></div>';
+    }
+    setTimeout(function () {
+      displayNone(message);
+      displayNone(csLoader);
+    }, 1000);
+  }
   setTimeout(function () {
     loadPayload(payload);
   }, 500);
@@ -406,6 +455,7 @@ function selectLang() {
   }
   loadHTML();
   requestLangueServer();
+  infosBubble();
 }
 /************************Check Language****************************/
 function checklang(langue) {
@@ -463,20 +513,22 @@ function buildHTML() {
     scrollings[0][defaultLangue].exploit +
     "</a>" +
     '<ul class="submenu" id="submenu0">' +
-    '<li><a href="#" class="custom-btn btn" onclick="load_mira(\'noofficial\'); return false">' +
+    /*'<li><a id="jb" href="#" class="custom-btn btn" onclick="load_JB(); return false">Jailbreak' +
+    "</a></li>" +*/
+    '<li><a id="miranooff" href="#" class="custom-btn btn" onclick="load_mira(\'noofficial\'); return false">' +
     payloads[0][defaultLangue].mira +
     "</a>" +
     "</li>" +
-    '<li><a href="#" class="custom-btn btn" onclick="load_mira(\'official\'); return false">' +
+    '<li><a id="miraoff" href="#" class="custom-btn btn" onclick="load_mira(\'official\'); return false">' +
     payloads[0][defaultLangue].mira2 +
     "</a></li>" +
-    '<li><a href="#" class="custom-btn btn" onclick="load_binloader(); return false">' +
+    '<li><a id="binloader" href="#" class="custom-btn btn" onclick="load_binloader(); return false">' +
     payloads[0][defaultLangue].binload +
     "</a></li>" +
-    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Todex\'); return false">' +
+    '<li><a id="todex" href="#" class="custom-btn btn" onclick="inject_payload(\'Todex\'); return false">' +
     payloads[0][defaultLangue].dex +
     "</a></li>" +
-    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Linux\'); return false">' +
+    '<li><a id="linux" href="#" class="custom-btn btn" onclick="inject_payload(\'Linux\'); return false">' +
     payloads[0][defaultLangue].linux +
     "</a></li>" +
     "</ul>" +
@@ -485,16 +537,16 @@ function buildHTML() {
     scrollings[0][defaultLangue].system +
     "</a>" +
     '<ul class="submenu" id="submenu1">' +
-    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'DumperKernel\'); return false">' +
+    '<li><a id="dumpkernel" href="#" class="custom-btn btn" onclick="inject_payload(\'DumperKernel\'); return false">' +
     payloads[0][defaultLangue].dumperkernel +
     "</a></li>" +
-    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'KernelClock\'); return false">' +
+    '<li><a id="kernelclock" href="#" class="custom-btn btn" onclick="inject_payload(\'KernelClock\'); return false">' +
     payloads[0][defaultLangue].kernelclock +
     "</a></li>" +
-    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'BackupDTB\'); return false">' +
+    '<li><a id="backupdtb" href="#" class="custom-btn btn" onclick="inject_payload(\'BackupDTB\'); return false">' +
     payloads[0][defaultLangue].backupDTB +
     "</a></li>" +
-    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'RestoreDTB\'); return false">' +
+    '<li><a id="restoredtb" href="#" class="custom-btn btn" onclick="inject_payload(\'RestoreDTB\'); return false">' +
     payloads[0][defaultLangue].restoreDTB +
     "</a></li>" +
     "</ul>" +
@@ -503,10 +555,10 @@ function buildHTML() {
     scrollings[0][defaultLangue].nav +
     "</a>" +
     '<ul class="submenu" id="submenu2">' +
-    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'History\'); return false">' +
+    '<li><a id="historY" href="#" class="custom-btn btn" onclick="inject_payload(\'History\'); return false">' +
     payloads[0][defaultLangue].history +
     "</a></li>" +
-    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Browser\'); return false">' +
+    '<li><a id="browser" href="#" class="custom-btn btn" onclick="inject_payload(\'Browser\'); return false">' +
     payloads[0][defaultLangue].browser +
     "</a></li>" +
     "</ul>" +
@@ -515,22 +567,22 @@ function buildHTML() {
     scrollings[0][defaultLangue].app +
     "</a>" +
     '<ul class="submenu" id="submenu3">' +
-    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'HenVTX\'); return false">' +
+    '<li><a id="hen" href="#" class="custom-btn btn" onclick="inject_payload(\'HenVTX\'); return false">' +
     payloads[0][defaultLangue].henvtx +
     "</a></li>" +
-    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'HenVTX_2.1.5\'); return false">' +
+    '<li><a id="hennooff" href="#" class="custom-btn btn" onclick="inject_payload(\'HenVTX_2.1.5\'); return false">' +
     payloads[0][defaultLangue].hennoofficial +
     "</a></li>" +
-    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Dumper\'); return false">' +
+    '<li><a id="dumper" href="#" class="custom-btn btn" onclick="inject_payload(\'Dumper\'); return false">' +
     payloads[0][defaultLangue].dumper +
     "</a></li>" +
-    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'App2usb\'); return false">' +
+    '<li><a id="app2usb" href="#" class="custom-btn btn" onclick="inject_payload(\'App2usb\'); return false">' +
     payloads[0][defaultLangue].app2usb +
     "</a></li>" +
-    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'rifs\'); return false">' +
+    '<li><a id="rifs" href="#" class="custom-btn btn" onclick="inject_payload(\'rifs\'); return false">' +
     payloads[0][defaultLangue].rifs +
     "</a></li>" +
-    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'WebRTE\'); return false">' +
+    '<li><a id="webrte" href="#" class="custom-btn btn" onclick="inject_payload(\'WebRTE\'); return false">' +
     payloads[0][defaultLangue].webrte +
     "</a></li>" +
     "</ul>" +
@@ -539,7 +591,7 @@ function buildHTML() {
     scrollings[0][defaultLangue].ftp +
     "</a>" +
     '<ul class="submenu" id="submenu4">' +
-    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Ftp\'); return false">' +
+    '<li><a id="ftp" href="#" class="custom-btn btn" onclick="inject_payload(\'Ftp\'); return false">' +
     payloads[0][defaultLangue].ftp +
     "</a></li>" +
     "</ul>" +
@@ -548,10 +600,10 @@ function buildHTML() {
     scrollings[0][defaultLangue].update +
     "</a>" +
     '<ul class="submenu" id="submenu6">' +
-    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Desabler\'); return false">' +
+    '<li><a id="desabler" href="#" class="custom-btn btn" onclick="inject_payload(\'Desabler\'); return false">' +
     payloads[0][defaultLangue].enabler +
     "</a></li>" +
-    '<li><a href="#" class="custom-btn btn" onclick="inject_payload(\'Enabler\'); return false">' +
+    '<li><a id="enabler" href="#" class="custom-btn btn" onclick="inject_payload(\'Enabler\'); return false">' +
     payloads[0][defaultLangue].desabler +
     "</a></li>" +
     "</ul>" +
@@ -560,7 +612,7 @@ function buildHTML() {
     scrollings[0][defaultLangue].ps4trainer +
     "</a>" +
     '<ul class="submenu" id="submenu7">' +
-    '<li><a class="custom-btn btn" href="http://ps4trainer.com/Trainer/index.html">' +
+    '<li><a id="ps4trainer" class="custom-btn btn" href="http://ps4trainer.com/Trainer/index.html">' +
     payloads[0][defaultLangue].ps4trainer +
     "</a></li>" +
     "</ul>" +
@@ -570,3 +622,120 @@ function buildHTML() {
 }
 loadHTML();
 displayCheckBox();
+/*******************Info bubble ********************************* */
+function GetId(id) {
+  return document.getElementById(id);
+}
+var i = false;
+function move(e) {
+  if (i) {
+    if (document.documentElement.clientWidth > 0) {
+      GetId("curseur").style.left =
+        50 + event.x + document.documentElement.scrollLeft + "px";
+      GetId("curseur").style.top =
+        -10 + event.y + document.documentElement.scrollTop + "px";
+    } else {
+      GetId("curseur").style.left =
+        50 + event.x + document.body.scrollLeft + "px";
+      GetId("curseur").style.top =
+        -10 + event.y + document.body.scrollTop + "px";
+    }
+  }
+}
+function showBubble(text) {
+  if (i == false) {
+    GetId("curseur").style.visibility = "visible";
+    GetId("curseur").innerHTML = text;
+    i = true;
+  }
+}
+function hideBubble() {
+  if (i == true) {
+    GetId("curseur").style.visibility = "hidden";
+    i = false;
+  }
+}
+document.onmousemove = move;
+
+/************************States Infos Bubble*********************************/
+if (getCookie("bubble") === null) {
+  createCookie("bubble", "bubble");
+  setInnerHTML(infobubble, '<span class="green">' + home[0][defaultLangue][getCookie("bubble")] + '</span');
+} else {
+  if(getCookie("bubble") === "bubble"){
+    setInnerHTML(infobubble, '<span class="green">' + home[0][defaultLangue][getCookie("bubble")] + '</span');
+  } else {
+    setInnerHTML(infobubble, '<span class="red">' + home[0][defaultLangue][getCookie("bubble")] + '</span');
+  }  
+  infosBubble();
+}
+
+function infosBubble() {
+  if (getCookie("bubble") === "bubble") {
+    let tabMenu = document.getElementById("menu");
+    let tabBtn = tabMenu.getElementsByClassName("custom-btn btn");
+    for (let i = 0, iMax = tabBtn.length; i < iMax; ++i) {
+      let id = tabBtn[i].id;
+      document.getElementById(id).addEventListener("mouseover", function () {
+        let j = i + 1;
+        showBubble(
+          '<div class="">' +
+            "<span>" +
+            payloads[j].title +
+            "<br></span>" +
+            "<span>" +
+            payloads[j].version +
+            "<br></span>" +
+            "<span>" +
+            payloads[j].updated +
+            "<br></span>" +
+            "<span>" +
+            payloads[j].firmware +
+            "<br></span>" +
+            "<span>" +
+            payloads[j].description[defaultLangue] +
+            "<br></span>" +
+            "<span>" +
+            payloads[j].author +
+            "<br></span>" +
+            "<span>" +
+            payloads[j].url +
+            "<br></span>" +
+            "</div>"
+        );
+      });
+      document.getElementById(id).addEventListener("mouseout", function () {
+        hideBubble();
+      });
+    }
+  } else {
+    let tabMenu = document.getElementById("menu");
+    let tabBtn = tabMenu.getElementsByClassName("custom-btn btn");
+    for (let i = 0, iMax = tabBtn.length; i < iMax; ++i) {
+      let id = tabBtn[i].id;
+      document.getElementById(id).addEventListener("mouseover", function () {
+        hideBubble();
+      });
+    }
+  }
+}
+/****************************Bubble display****************** */
+function displayBubble() {
+  if (getCookie("bubble") == "bubble") {
+    console.log("1");
+    setInnerHTML(
+      infobubble,
+      '<span class="red">' + home[0][defaultLangue].nobubble + "</span>"
+    );
+    modifyCookie("bubble", "nobubble");
+    infosBubble();
+  } else if (getCookie("bubble") == "nobubble") {
+    console.log("2");
+    setInnerHTML(
+      infobubble,
+      '<span class="green">' + home[0][defaultLangue].bubble + "</span>"
+    );
+    modifyCookie("bubble", "bubble");
+    infosBubble();
+  }
+}

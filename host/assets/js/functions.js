@@ -30,6 +30,7 @@ function removeScript(nb) {
     nb--;
   }
 }
+
 function createCookie(name, value) {
   let expire = addDays(30);
   document.cookie = name + "=" + value + ";expires=" + expire.toUTCString();

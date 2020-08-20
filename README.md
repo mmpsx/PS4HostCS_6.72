@@ -49,8 +49,11 @@ PS4 Jailbreak Host 25/07/2020
 
 ### 17/08/2020 PS4HostCS V2.0.8
 - Add server node
-- Add Ip connexion PS4 and Host
+- Add Ip connexion PS4 and Host (Available after PS4HostCS.exe login)
 - Selector Language display instruction server by PS4HostCS
+
+### 17/08/2020 PS4HostCS V2.0.9
+- Add function Info Bubble display or not (Langue FR or EN);
 
 [![Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 

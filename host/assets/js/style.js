@@ -2,7 +2,7 @@
 let level = 0;
 let spoof = false;
 let title = document.getElementsByTagName("title");
-let version = "2.0.9";
+let version = "3.0.0";
 let exploit = null;
 let boxip = document.getElementById("boxip");
 let infobubble = document.getElementById("infobubble");
@@ -213,13 +213,13 @@ function finished() {
         displayNone(csLoader);
         setInnerText(message, "");
         boxip.innerHTML +=
-          '<div class="lan">Jailbreak <span class="green">OK</span></div>'
-        /*setInnerText(message, home[0][defaultLangue].jbsuccess);
-        setTimeout(function () {
-          setInnerText(message, "");
-        }, 3000);*/
-      } else setInnerText(message, home[0][defaultLangue].jbfailed);
-      removeScript(0);
+          '<div class="lan">Jailbreak <span class="green">OK</span></div>';
+      } else {
+        setInnerText(message, home[0][defaultLangue].jbfailed);
+        boxip.innerHTML +=
+          '<div class="lan">Jailbreak <span class="red">Echec</span></div>';
+        removeScript(0);
+      }
       break;
     default:
       pl_loaded();
@@ -694,7 +694,7 @@ if (getCookie("bubble") === null) {
   infosBubble();
 }
 /*****************Position Top Bubble selector********************/
-function position_top(j){
+function position_top(j) {
   if (j >= 6 && j <= 9) {
     topBubble = -(a * 10);
     a++;
@@ -726,7 +726,7 @@ function infosBubble() {
 
       document.getElementById(id).addEventListener("mouseover", function () {
         let j = i + 1;
-        position_top(j)
+        position_top(j);
         showBubble(
           '<div class="">' +
             "<span>" +

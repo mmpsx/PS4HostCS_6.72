@@ -661,6 +661,7 @@ document.onmousemove = move;
 if (getCookie("bubble") === null) {
   createCookie("bubble", "bubble");
   setInnerHTML(infobubble, '<span class="green">' + home[0][defaultLangue][getCookie("bubble")] + '</span');
+  infosBubble();
 } else {
   if(getCookie("bubble") === "bubble"){
     setInnerHTML(infobubble, '<span class="green">' + home[0][defaultLangue][getCookie("bubble")] + '</span');

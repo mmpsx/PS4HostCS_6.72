@@ -29,7 +29,9 @@ body {
     color: #fff;
     font-size: 25px;
     bottom: 75px;
+     z-index: 1;
 }
+
 .cs-loader {
     position: absolute;
     display: none;

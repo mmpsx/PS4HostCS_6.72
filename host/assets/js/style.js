@@ -18,7 +18,6 @@ let payloads = [];
 pl = [
   pls,
   //jb,
-  miranooff,
   miraoff,
   binloader,
   todex,
@@ -30,7 +29,6 @@ pl = [
   historY,
   browser,
   hen,
-  hennooff,
   dumper,
   app2usb,
   rifs,
@@ -517,10 +515,6 @@ function buildHTML() {
     '<ul class="submenu" id="submenu0">' +
     /*'<li><a id="jb" href="#" class="custom-btn btn" onclick="load_JB(); return false">Jailbreak' +
     "</a></li>" +*/
-    '<li><a id="miranooff" href="#" class="custom-btn btn" onclick="load_mira(\'noofficial\'); return false">' +
-    payloads[0][defaultLangue].mira +
-    "</a>" +
-    "</li>" +
     '<li><a id="miraoff" href="#" class="custom-btn btn" onclick="load_mira(\'official\'); return false">' +
     payloads[0][defaultLangue].mira2 +
     "</a></li>" +
@@ -571,9 +565,6 @@ function buildHTML() {
     '<ul class="submenu" id="submenu3">' +
     '<li><a id="hen" href="#" class="custom-btn btn" onclick="inject_payload(\'HenVTX\'); return false">' +
     payloads[0][defaultLangue].henvtx +
-    "</a></li>" +
-    '<li><a id="hennooff" href="#" class="custom-btn btn" onclick="inject_payload(\'HenVTX_2.1.9\'); return false">' +
-    payloads[0][defaultLangue].hennoofficial +
     "</a></li>" +
     '<li><a id="dumper" href="#" class="custom-btn btn" onclick="inject_payload(\'Dumper\'); return false">' +
     payloads[0][defaultLangue].dumper +

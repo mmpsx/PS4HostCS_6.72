@@ -21,6 +21,7 @@ PL_EN\Enabler.js
 PL_EN\Fancontrol.js
 PL_EN\Ftp.js
 PL_EN\HenVTX.js
+PL_EN\HenVTX_2.1.9.js
 PL_EN\History.js
 PL_EN\KernelClock.js
 PL_EN\Linux.js
@@ -30,6 +31,7 @@ PL_EN\Todex.js
 PL_EN\WebRTE.js
 PL_EN\binloader\c-code.js
 PL_EN\mirahen\c-code.js
+PL_EN\mirahen\noofficial.js
 PL_EN\mirahen\official.js
 PL_FR\App2usb.js
 PL_FR\BackupDTB.js
@@ -41,6 +43,7 @@ PL_FR\Enabler.js
 PL_FR\Fancontrol.js
 PL_FR\Ftp.js
 PL_FR\HenVTX.js
+PL_FR\HenVTX_2.1.9.js
 PL_FR\History.js
 PL_FR\KernelClock.js
 PL_FR\Linux.js
@@ -51,4 +54,5 @@ PL_FR\Todex.js
 PL_FR\WebRTE.js
 PL_FR\binloader\c-code.js
 PL_FR\mirahen\c-code.js
+PL_FR\mirahen\noofficial.js
 PL_FR\mirahen\official.js

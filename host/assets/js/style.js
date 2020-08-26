@@ -2,11 +2,12 @@
 let level = 0;
 let spoof = false;
 let title = document.getElementsByTagName("title");
-let version = "3.0.0";
+let version = "3.0.1";
 let exploit = null;
 let boxip = document.getElementById("boxip");
 let infobubble = document.getElementById("infobubble");
-
+let menuList = document.getElementById("menulist");
+let menuRpi = document.getElementById("menurpi");
 let scrollings = [];
 scrolling = [scrolls];
 
@@ -17,7 +18,8 @@ for (let i = 0; i < scrolling.length; i++) {
 let payloads = [];
 pl = [
   pls,
-  //jb,
+  jb,
+  miranooff,
   miraoff,
   binloader,
   todex,
@@ -29,6 +31,7 @@ pl = [
   historY,
   browser,
   hen,
+  hennooff,
   dumper,
   app2usb,
   rifs,
@@ -49,14 +52,14 @@ for (let i = 0; i < datas.length; i++) {
   home[i] = JSON.parse(datas[i]);
 }
 /*********************Définition des contantes**********************/
-const menuList = document.getElementById("menulist");
+
 const fanProgress = document.getElementById("fanprogress");
 const csLoader = document.getElementById("cs-loader");
 const firmware = document.getElementById("firmware");
 
 const fanprogress = document.getElementById("fanprogress");
 const displayLangue = document.getElementById("language");
-const menu = document.getElementById("menulist");
+
 const choiceLang = document.getElementById("choicelangue");
 const overlay = document.getElementById("cache-overlay");
 
@@ -195,16 +198,16 @@ function finished() {
   switch (exploit) {
     case "Mira Officiel":
       pl_loaded();
-      removeScript(2);
+      removeScript();
       break;
     case "Mira non Officiel":
       spoof = true;
       pl_loaded();
-      removeScript(2);
+      removeScript();
       break;
     case "Binloader":
       pl_loaded();
-      removeScript(2);
+      removeScript();
       break;
     case "Jailbreak":
       if (main_ret == 179 || main_ret == 0) {
@@ -216,12 +219,12 @@ function finished() {
         setInnerText(message, home[0][defaultLangue].jbfailed);
         boxip.innerHTML +=
           '<div class="lan">Jailbreak <span class="red">Echec</span></div>';
-        removeScript(0);
+        removeScript();
       }
       break;
     default:
       pl_loaded();
-      removeScript(2);
+      removeScript();
       break;
   }
 }
@@ -342,34 +345,34 @@ function load_binloader() {
 function displayFan() {
   let barfan = '<div id="fan">';
   switch (readCookie("fan")) {
-    case "56":
+    case "76":
       level = 1;
       break;
-    case "57":
+    case "77":
       level = 2;
       break;
-    case "58":
+    case "78":
       level = 3;
       break;
-    case "59":
+    case "79":
       level = 4;
       break;
-    case "60":
+    case "80":
       level = 5;
       break;
-    case "61":
+    case "81":
       level = 6;
       break;
-    case "62":
+    case "82":
       level = 7;
       break;
-    case "63":
+    case "83":
       level = 8;
       break;
-    case "64":
+    case "84":
       level = 9;
       break;
-    case "65":
+    case "85":
       level = 10;
       break;
   }
@@ -385,44 +388,44 @@ function setCookieLevel() {
     document.getElementById(id).addEventListener("click", function () {
       switch (id.split("b")[0]) {
         case "0":
-          modifyCookie("fan", "56");
-          modifyCookie("levelTemp", "56");
+          modifyCookie("fan", "76");
+          modifyCookie("levelTemp", "76");
           break;
         case "1":
-          modifyCookie("fan", "57");
-          modifyCookie("levelTemp", "57");
+          modifyCookie("fan", "77");
+          modifyCookie("levelTemp", "77");
           break;
         case "2":
-          modifyCookie("fan", "58");
-          modifyCookie("levelTemp", "58");
+          modifyCookie("fan", "78");
+          modifyCookie("levelTemp", "78");
           break;
         case "3":
-          modifyCookie("fan", "59");
-          modifyCookie("levelTemp", "59");
+          modifyCookie("fan", "79");
+          modifyCookie("levelTemp", "79");
           break;
         case "4":
-          modifyCookie("fan", "60");
-          modifyCookie("levelTemp", "60");
+          modifyCookie("fan", "80");
+          modifyCookie("levelTemp", "80");
           break;
         case "5":
-          modifyCookie("fan", "61");
-          modifyCookie("levelTemp", "61");
+          modifyCookie("fan", "81");
+          modifyCookie("levelTemp", "81");
           break;
         case "6":
-          modifyCookie("fan", "62");
-          modifyCookie("levelTemp", "62");
+          modifyCookie("fan", "82");
+          modifyCookie("levelTemp", "82");
           break;
         case "7":
-          modifyCookie("fan", "63");
-          modifyCookie("levelTemp", "63");
+          modifyCookie("fan", "83");
+          modifyCookie("levelTemp", "83");
           break;
         case "8":
-          modifyCookie("fan", "64");
-          modifyCookie("levelTemp", "64");
+          modifyCookie("fan", "84");
+          modifyCookie("levelTemp", "84");
           break;
         case "9":
-          modifyCookie("fan", "65");
-          modifyCookie("levelTemp", "65");
+          modifyCookie("fan", "85");
+          modifyCookie("levelTemp", "85");
           break;
       }
       displayFan();
@@ -432,7 +435,7 @@ function setCookieLevel() {
 }
 /************************Language definition**********************/
 function loadHTML() {
-  if (menu) {
+  if (menuList) {
     title[0].innerHTML =
       "PS4HostCS" +
       " V " +
@@ -441,7 +444,7 @@ function loadHTML() {
       plLangue() +
       " " +
       home[0][defaultLangue].compagnie;
-    setInnerHTML(menu, buildHTML());
+    setInnerHTML(menuList, buildHTML());
   }
 }
 function selectLang() {
@@ -513,8 +516,12 @@ function buildHTML() {
     scrollings[0][defaultLangue].exploit +
     "</a>" +
     '<ul class="submenu" id="submenu0">' +
-    /*'<li><a id="jb" href="#" class="custom-btn btn" onclick="load_JB(); return false">Jailbreak' +
-    "</a></li>" +*/
+    '<li><a id="jb" href="#" class="custom-btn btn" onclick="load_JB(); return false">Jailbreak' +
+    "</a></li>" +
+    '<li><a id="miranooff" href="#" class="custom-btn btn" onclick="load_mira(\'noofficial\'); return false">' +
+    payloads[0][defaultLangue].mira +
+    "</a>" +
+    "</li>" +
     '<li><a id="miraoff" href="#" class="custom-btn btn" onclick="load_mira(\'official\'); return false">' +
     payloads[0][defaultLangue].mira2 +
     "</a></li>" +
@@ -539,7 +546,7 @@ function buildHTML() {
     '<li><a id="kernelclock" href="#" class="custom-btn btn" onclick="inject_payload(\'KernelClock\'); return false">' +
     payloads[0][defaultLangue].kernelclock +
     "</a></li>" +
-    '<li><a id="backupdtb" href="#" class="custom-btn btn" onclick="inject_payload(\'BackupDTB\'); return false">' +
+    '<li><a id="backupdtb" href="#" class="custom-btn btn-" onclick="inject_payload(\'BackupDTB\'); return false">' +
     payloads[0][defaultLangue].backupDTB +
     "</a></li>" +
     '<li><a id="restoredtb" href="#" class="custom-btn btn" onclick="inject_payload(\'RestoreDTB\'); return false">' +
@@ -565,6 +572,9 @@ function buildHTML() {
     '<ul class="submenu" id="submenu3">' +
     '<li><a id="hen" href="#" class="custom-btn btn" onclick="inject_payload(\'HenVTX\'); return false">' +
     payloads[0][defaultLangue].henvtx +
+    "</a></li>" +
+    '<li><a id="hennooff" href="#" class="custom-btn btn" onclick="inject_payload(\'HenVTX_2.1.9\'); return false">' +
+    payloads[0][defaultLangue].hennoofficial +
     "</a></li>" +
     '<li><a id="dumper" href="#" class="custom-btn btn" onclick="inject_payload(\'Dumper\'); return false">' +
     payloads[0][defaultLangue].dumper +
@@ -711,7 +721,7 @@ function position_top(j) {
 function infosBubble() {
   if (getCookie("bubble") === "bubble") {
     let tabMenu = document.getElementById("menu");
-    let tabBtn = tabMenu.getElementsByClassName("custom-btn btn");
+    let tabBtn = tabMenu.getElementsByClassName("custom-btn-rpi btn-rpi");
     for (let i = 0, iMax = tabBtn.length; i < iMax; ++i) {
       let id = tabBtn[i].id;
 
@@ -750,7 +760,7 @@ function infosBubble() {
     }
   } else {
     let tabMenu = document.getElementById("menu");
-    let tabBtn = tabMenu.getElementsByClassName("custom-btn btn");
+    let tabBtn = tabMenu.getElementsByClassName("custom-btn-rpi btn-rpi");
     for (let i = 0, iMax = tabBtn.length; i < iMax; ++i) {
       let id = tabBtn[i].id;
       document.getElementById(id).addEventListener("mouseover", function () {
@@ -777,5 +787,51 @@ function displayBubble() {
     );
     modifyCookie("bubble", "bubble");
     infosBubble();
+  }
+}
+
+/********************************RPI***************************/
+
+function buildRPI() {
+  let buildRpi =
+    '<div id="posts"></div>' +
+    '<div class="row justify-content-md-center">' +
+    '<form class="form-inline">' +
+    '<input type="text" class="form-control" id="ip" value="' +
+    localStorage.getItem("PS4") +
+    '">' +
+    "</form>" +
+    "</div>" +
+    '<div class="row justify-content-md-center">' +
+    '<form class="form-inline">' +
+    '<div class="form-group mx-sm-2 mb-2">' +
+    '<input class="form-control" id="existTitleId" type ="hidden">' +
+    "</div>" + 
+    "</form>" +
+      '<div class="container-fluid">' +
+      '<div class="row" id="titleid-list">' +
+      "</div>" +
+    "</div>" +
+    "</div>" +
+    "</div>";
+
+  return buildRpi;
+}
+
+function displayRpi() {
+  if (sessionStorage.getItem("rpi") === null) {
+    sessionStorage.setItem("rpi", "active");
+  }
+  if (sessionStorage.getItem("rpi") === "noactive") {
+    setInnerHTML(menuRpi, "");
+    setInnerHTML(menuList, buildHTML());
+    sessionStorage.setItem("rpi", "active");
+    removeScript();
+  } else if (sessionStorage.getItem("rpi") === "active") {
+    setInnerHTML(menuList, "");
+    setInnerHTML(menuRpi, buildRPI());
+    let func = "assets/js/rpi.js";
+    newScript(func);
+    sessionStorage.setItem("rpi", "noactive");
   }
 }

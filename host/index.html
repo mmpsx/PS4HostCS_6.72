@@ -1,9 +1,13 @@
-<html manifest="offline.manifest">
+<!--<html manifest="offline.manifest">-->
 <html>
 <head>
     <title></title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="assets/css/default.min.css">
+    
+    
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/default.css">
+    <link rel="stylesheet" href="assets/css/rpi.css">
 </head>
 <body>
     <script>
@@ -14,11 +18,11 @@
         let cach = [];
         function infoCache() { cac = [ca]; for (let i = 0; i < cac.length; i++) { cach[i] = JSON.parse(cac[i]); } }
         function checkFw() {
-            let ua = navigator.userAgent;
+            /*let ua = navigator.userAgent;
             fwVersion = ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple"));
-            return fwVersion;
+            return fwVersion;*/
             //for test interface of PC*/
-            // return fwVersion = "6.72";
+            return fwVersion = "6.72";
         }
         if (checkFw() === "6.72" || checkFw() === "8.00") {
             window.applicationCache.ondownloading = function () {
@@ -70,7 +74,11 @@
     <div id="language" class="hidelanguage"></div>
     <div id="choicelangue"><button>Language</button></div>
     <div id="message" class="message"></div>
-    <div id="menulist" class="container"></div>
+    
+    <div id="menulist"></div>
+    <div id="menurpi"></div>
+
+    
     <div id="cs-loader" class="cs-loader">
         <div class="cs-loader-inner">
             <label></label>
@@ -81,8 +89,9 @@
             <label></label>
         </div>
     </div>
-    <hr>
-    <footer>
+   
+    <footer> 
+        <hr>
         <div class="box">
             <div id="fanprogress" class="fanprogress"></div>
             <div id="boxip" class="boxip"></div>
@@ -91,8 +100,15 @@
                 <input type="checkbox" onclick="displayBubble()">
                 <span class="slider round"></span></span>
             </label>
+            <div id="inforpi" class="info-rpi">RPI :</div>
+            <label class="switch">
+                <input type="checkbox" onclick="displayRpi()">
+                <span class="slider round"></span></span>
+            </label>
             <div id="firmware"></div>
         </div>
+
+
     </footer>
     <script src="assets/lang/ca.json"></script>
     <script>
@@ -102,7 +118,14 @@
     <script src="assets/lang/scrolling.json"></script>
     <script src="assets/lang/payload.json"></script>
     <script src="assets/lang/home.json"></script>
+    <script src="assets/bootstrap/jquery-3.3.1.min.js"></script>
+    <script src="assets/bootstrap/popper.min.js"></script>
+    <script src="assets/bootstrap/bootstrap.min.js"></script>
+   
+    <script src="assets/js/sha.js"></script>
+   <!-- <script src="assets/js/rpi.js"></script>-->
     <script src="assets/js/style.js"></script>
+    
 </body>
 
 </html>

@@ -1,0 +1,88 @@
+
+/*
+img.superbg {
+left: 0;
+min-height: 100%;
+position: fixed;
+top: 0;
+width: 100%;
+z-index: -999;
+}*/
+.btncard{
+  border:none;
+  background:transparent;
+}
+#menurpi {
+  margin-top: 2em;
+  height: 55%;
+}
+input{
+  text-align:center;
+}
+.container{
+  background: #023ba5;
+}
+.card{
+  border:none;
+}
+.card-style{
+  background: #023ba5;
+}
+.nav{
+  margin:20px;
+}
+.li-nav {
+  margin:10px;
+}
+.li-nav a{
+  text-decoration: none;
+}
+.custom-btn-rpi {
+  padding:5px;
+  text-align:center;
+  width: 100px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 500;
+  background: 0 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0 rgba(0, 0, 0, 0.1), 4px 4px 5px 0 rgba(0, 0, 0, 0.1);
+}
+.btn-rpi {
+  border: none;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.btn-rpi:after {
+  position: absolute;
+  content: " ";
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+.btn-rpi:hover {
+  background: 0 0;
+  box-shadow: 2px 2px 4px 0 rgba(255, 255, 255, 0.5),
+    -2px -2px 4px 0 rgba(116, 125, 136, 0.2),
+    inset -2px -2px 4px 0 rgba(255, 255, 255, 0.5),
+    inset 2px 2px 4px 0 rgba(116, 125, 136, 0.3);
+  color: #fff;
+}
+.btn-rpi:hover:after {
+  transform: scale(2) rotate(180deg);
+  box-shadow: 2px 2px 4px 0 rgba(255, 255, 255, 0.5),
+    -2px -2px 4px 0 rgba(116, 125, 136, 0.2),
+    inset -2px -2px 4px 0 rgba(255, 255, 255, 0.5),
+    inset 2px 2px 4px 0 rgba(116, 125, 136, 0.3);
+}
+.badge{
+  margin:0 10px;
+}

@@ -22,12 +22,11 @@ function plLangue() {
       return (pl_langue = "EN");
   }
 }
-function removeScript(nb) {
+function removeScript() {
   let head = document.getElementsByTagName("head")[0];
   let scripts = head.getElementsByTagName("script");
-  for (let i = scripts.length; i > 1; i--) {
-    head.removeChild(scripts[nb]);
-    nb--;
+  for (let i = scripts.length; i > 0; i--) {
+    head.removeChild(scripts[i - 1]);
   }
 }
 
@@ -116,4 +115,4 @@ function loadPayload(payload) {
     document.getElementsByTagName("head")[0].appendChild(element);
   }
 }
-createTempDefault("65");
+createTempDefault("85");
